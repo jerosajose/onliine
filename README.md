@@ -1,6 +1,6 @@
 # Welcome to Onliine!
 The best website that simulates the Wii System to the perfection (almost).
-![Project Logo](https://github.com/Ascript89/onliine/assets/logotype.png)
+![Project Logo](https://raw.githubusercontent.com/Ascript89/onliine/main/assets/logotype.png)
 
 ## Collaborations
 I'm open to collaborations! Come and join [the Discord server](https://discord.gg/qMdZZkps2E)
@@ -12,7 +12,7 @@ might contain errors, poorly written code and will not focus on performance at t
 Thus, it's a great to start and evolve into something bigger, like a Dolphin VM built into
 WebAssembly (😳), or a real working Wii Shop Channel to download all sorts of apps.
 
-Latest version available:&nbsp;<iframe style="width: max-content; height: 20px;" src="//jerosgamer.me/res/sysver.txt">Couldn't display the latest version</iframe>
+Visit [this website](https://jerosgamer.me/res/sysver.txt) to check the latest version available.
 
 ## Updater
 While you tinker with the source code, make sure to often visit the Settings page, which is
@@ -23,10 +23,10 @@ The update method is completely manual, meaning you just have to download the so
 and merge the new files into your previously/outdated downloaded folder.
 
 ## License
-Onliine Website - Wii System simulator
-Copyright (C) 2023 JerosGamer89
-Legal queries at smartlinkwfs (at/@) gmail.com
-Source: https://github.com/Ascript89/onliine
+Onliine Website - Wii System simulator<br>
+Copyright (C) 2023 JerosGamer89<br>
+Legal queries at smartlinkwfs (at/@) gmail.com<br>
+Source: https://github.com/Ascript89/onliine<br>
 
 This website is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published
