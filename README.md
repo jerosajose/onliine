@@ -23,10 +23,10 @@ The update method is completely manual, meaning you just have to download the so
 and merge the new files into your previously/outdated downloaded folder.
 
 ## License
-Onliine Website - Wii System simulator
-Copyright (C) 2023 JerosGamer89
-Legal queries at smartlinkwfs (at/@) gmail.com
-Source: https://github.com/Ascript89/onliine
+Onliine Website - Wii System simulator<br>
+Copyright (C) 2023 JerosGamer89<br>
+Legal queries at smartlinkwfs (at/@) gmail.com<br>
+Source: https://github.com/Ascript89/onliine<br>
 
 This website is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published
