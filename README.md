@@ -12,7 +12,7 @@ might contain errors, poorly written code and will not focus on performance at t
 Thus, it's a great to start and evolve into something bigger, like a Dolphin VM built into
 WebAssembly (😳), or a real working Wii Shop Channel to download all sorts of apps.
 
-Latest version available:&nbsp;<iframe style="width: max-content; height: 20px;" src="//jerosgamer.me/res/sysver.txt">Couldn't display the latest version</iframe>
+Visit [this website](https://jerosgamer.me/res/sysver.txt) to check the latest version available.
 
 ## Updater
 While you tinker with the source code, make sure to often visit the Settings page, which is
