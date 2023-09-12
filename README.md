@@ -1,6 +1,6 @@
 # Welcome to Onliine!
 The best website that simulates the Wii System to the perfection (almost).
-![Project Logo]([https://github.com/Ascript89/onliine/assets/logotype.png](https://raw.githubusercontent.com/Ascript89/onliine/main/assets/logotype.png))
+![Project Logo](https://raw.githubusercontent.com/Ascript89/onliine/main/assets/logotype.png)
 
 ## Collaborations
 I'm open to collaborations! Come and join [the Discord server](https://discord.gg/qMdZZkps2E)
