@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wtf r u doin here</title>
+    <link rel="stylesheet" href="../../css/base.css" />
+    <style>
+        body {
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+        .gradient {
+            background-image: linear-gradient(60deg, #1a5507, #208920, #1a5407);
+            position: absolute; inset: 0;
+            filter: brightness(90%);
+        }
+        .title {
+            position: absolute;
+            top: 5vh; left: 0; right: 0;
+            display: flex;
+            justify-content: center;
+            color: white;
+            text-shadow: 0 0.2vh 1vh black;
+            font-size: 16vh;
+            letter-spacing: -0.5vh;
+        }
+        .bg {
+            background-image: url('bg.png');
+            background-size: 9vh;
+            width: 100vw; height: 100vh;
+            position: absolute;
+            top: 0; left: 0;
+            opacity: 0.1;
+        }
+        .map {
+            background-image: url('map.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+            bottom: -5vh; left: 0; right: 0;
+            height: 90vh;
+            opacity: 0.3;
+            animation: map 10s linear infinite;
+        }
+        @keyframes map {
+            0% {opacity: 0.3;}
+            55% {opacity: 0.3;}
+            60% {opacity: 0.5;}
+            95% {opacity: 0.5;}
+            100% {opacity: 0.3;}
+        }
+        .news {
+            position: absolute;
+            bottom: 10vh;
+        }
+        .header {
+            background-color: #33333377;
+            margin-bottom: 5vh;
+        }
+        .header .text {
+            color: white;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            font-size: 10vh;
+            width: max-content;
+            animation: htext 10s linear infinite;
+        }
+        @keyframes htext {
+            from {transform: translateX(110%);}
+            to {transform: translateX(-110%);}
+        }
+        .header .text img {
+            margin: 0 5vh;
+            height: 16vh;
+        }
+        .header .text img.scnd {
+            margin: 0 5vh 0 30vw;
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient"></div>
+    <div class="bg"></div>
+    <div class="map"></div>
+    <div class="title">News Channel</div>
+
+    <div class="news">
+        <div class="header">
+            <div class="text">
+                <img src="pinpoint.png" />
+                Website in development phase
+            </div>
+        </div>
+        <div class="header">
+            <div class="text">
+                <img src="pinpoint.png" class="scnd" />
+                Developed with a lot of enthusiasm and effort
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+ErrorDocument 404 /res/404.html
+ErrorDocument 403 /res/403.html
+
+Redirect 403 /.htaccess /res/403.html
+
+RewriteCond %{HTTP_USER_AGENT} \
+RewriteCond %{HTTP_USER_AGENT} ^[Ww]eb[Bb]andit [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^$ [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^Acunetix [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^binlar [NC,OR]
+RewriteCond %{HTTP_USER_AGENT} ^BlackWidow [NC,OR]
+
+RewriteEngine On
+RewriteCond %{HTTP_REFERER} ^http://(.*)spamreferrer1\.org [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://(.*)bandwidthleech\.com [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http://(.*)contentthieves\.ru [NC]
+RewriteRule (.*) - [F,L]

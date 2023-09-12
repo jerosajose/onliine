@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wtf r u doin here</title>
+    <link rel="stylesheet" href="../../css/base.css" />
+    <style>
+        body {
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+
+            background-image: url('bg.png');
+            background-size: 40%;
+        }
+        .container {
+            opacity: 0;
+            animation: container 12s linear 100ms infinite;
+        }
+        .title {
+            color: white;
+            text-shadow: 0 1vh 5px black;
+            font-size: 16vh;
+            line-height: 0;
+            padding: 14vh 0;
+            text-align: center;
+            background-color: #ff6a007f;
+            margin-top: -28vh;
+            z-index: 3;
+            animation: title 12s linear 100ms infinite;
+        }
+        img {
+            border: 3vh #eee solid;
+            box-shadow: 0 0.5vh 10px black;
+            position: absolute;
+            height: 45vh;
+            z-index: 1;
+        }
+        .fore {
+            transform: rotate(10deg) translateX(-50%);
+            bottom: 10vh; left: 50%;
+            z-index: 2;
+            animation: fore 12s linear 100ms infinite;
+        }
+        .bl {
+            transform: rotate(-7deg);
+            bottom: 4vh; left: 2vh;
+            animation: bl 12s linear 100ms infinite;
+        }
+        .br {
+            transform: rotate(2deg);
+            bottom: 3vh; right: 0;
+            animation: br 12s linear 100ms infinite;
+        }
+        @keyframes title {
+            0% {margin-top: -28vh;}
+            30% {margin-top: -28vh;}
+            35% {margin-top: 0;}
+            100% {margin-top: 0;}
+        }
+        @keyframes fore {
+            0% {opacity: 0; bottom: 35vh;}
+            10% {opacity: 0; bottom: 35vh;}
+            15% {opacity: 1; bottom: 35vh;}
+            30% {bottom: 35vh;}
+            35% {bottom: 10vh;}
+            100% {bottom: 10vh;}
+        }
+        @keyframes bl {
+            0% {opacity: 0; bottom: 15vh;}
+            5% {opacity: 0; bottom: 15vh;}
+            10% {opacity: 1; bottom: 15vh;}
+            30% {bottom: 15vh;}
+            35% {bottom: 4vh;}
+            100% {bottom: 4vh;}
+        }
+        @keyframes br {
+            0% {opacity: 0; bottom: 15vh;}
+            5% {opacity: 1; bottom: 15vh;}
+            30% {bottom: 15vh;}
+            35% {bottom: 3vh;}
+            100% {bottom: 3vh;}
+        }
+        @keyframes container {
+            0% {opacity: 0;}
+            3% {opacity: 1;}
+            90% {opacity: 1;}
+            95% {opacity: 0;}
+            100% {opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Photo Channel</div>
+        <img src="backleft.png" class="bl" />
+        <img src="fore.png" class="fore" />
+        <img src="backright.png" class="br" />
+    </div>
+</body>
+</html>

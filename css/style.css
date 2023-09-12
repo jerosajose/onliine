@@ -1,0 +1,1328 @@
+/*  Global site styling  */
+
+.testpurpose {
+    font-size: 5vh;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    background-color: yellow;
+    color: black;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0.2;
+}
+
+:root {
+    --blue: #3bb7ff;
+}
+
+@font-face {
+    font-family: 'Regular';
+    src: url('../fonts/FOT-RodinNTLG\ Pro\ DB.otf');
+}
+
+@font-face {
+    font-family: 'Bold';
+    src: url('../fonts/FOT-Rodin\ Pro\ B.otf');
+}
+
+@font-face {
+    font-family: 'TitleBold';
+    src: url('../fonts/continuum-bold.ttf');
+}
+
+@font-face {
+    font-family: 'TitleMed';
+    src: url('../fonts/continuum-medium.ttf');
+}
+
+@font-face {
+    font-family: 'Display';
+    src: url('../fonts/digital-7\ \(mono\).ttf');
+}
+
+
+@keyframes fadeIn {
+    from {opacity: 0;} to {opacity: 1;}
+}
+
+@keyframes fadeOut {
+    from {opacity: 1;} to {opacity: 0;}
+}
+
+.fadeOut {
+    animation: fadeOut 250ms ease-out forwards;
+}
+
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    font-smooth: always;
+    scroll-behavior: smooth;
+    transition: 200ms;
+}
+
+body {
+    padding: 0; margin: 0;
+    overflow: hidden;
+    background-color: black;
+    color: #84868a;
+    font-family: 'Regular';
+    font-size: 2vh;
+    cursor: url('../assets/cursor.png'), auto;
+}
+
+.main-menu {
+    background-image: url('../assets/bg-pattern.png');
+    height: 100vh; width: 100vw;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+center {
+    text-align: center;
+}
+
+strong {
+    font-family: 'Bold';
+}
+
+a, button {
+    color: inherit;
+    background: none;
+    outline: none;
+    border: none;
+    cursor: inherit;
+    text-decoration: none;
+    font-family: inherit;
+    margin: 0; padding: 0;
+}
+
+.buttonlike:hover {
+    transform: scale(1.1);
+    transition: transform 150ms linear;
+}
+
+.disabled-btn {
+    filter: grayscale(200%) contrast(50%) brightness(120%);
+    pointer-events: none;
+    color: #aaa !important;
+} .disabled-btn {transform: none !important;}
+
+.splash {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: black;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    pointer-events: none;
+    animation: fadeOut 250ms linear 3s forwards;
+}
+
+.splash div .collabo {
+    height: 15vh;
+    margin-bottom: 30px;
+}
+
+.splash div .tip {
+    position: absolute;
+    bottom: 5vh; left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.6;
+}
+
+.splash .channels {
+    width: 70vw;
+    position: absolute;
+    top: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.loading {
+    animation: rotate 1s linear infinite;
+}
+
+.bottom-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    width: 100vw;
+    height: 20vh;
+    padding: 0; margin: 0;
+    display: grid;
+    grid-template-columns: 20vw auto 20vw;
+    align-items: center;
+    text-align: center;
+}
+
+.bottom-bar .lateral {
+    background-image: url('../assets/bottom-bg.png');
+    background-repeat: repeat-x;
+    background-size: contain;
+    height: 100%;
+
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.bottom-bar .lateral.right {
+    justify-content: right !important;
+}
+
+.bottom-bar .lateral .left-btn {
+    position: absolute;
+    left: 0;
+    width: 22vh;
+}
+
+.bottom-bar .lateral .wii-btn {
+    height: 65%;
+    position: absolute;
+    left: 7vh;
+}
+
+.bottom-bar .lateral .right-btn {
+    position: absolute;
+    right: 0;
+    width: 22vh;
+}
+
+.bottom-bar .lateral .diary-btn {
+    height: 65%;
+    position: absolute;
+    right: 7vh;
+}
+
+.bottom-bar .lateral .wii-btn:hover,
+.bottom-bar .lateral .diary-btn:hover {
+    transform: scale(1.1);
+}
+
+.bottom-bar .lateral span.tag {
+    background-color: white;
+    border: 0.1vh solid gray;
+    border-radius: 500px;
+    box-shadow: 0 0.5vh 1vh #aaaaaa88;
+    padding: 1.5vh 4vh;
+    line-height: 3.5vh;
+    font-size: 3.5vh;
+    position: absolute;
+    top: -20%;
+    width: max-content;
+    z-index: 2;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: 250ms ease-out;
+}
+
+.bottom-bar .lateral.left span.tag {left: 10%;}
+.bottom-bar .lateral.right span.tag {right: 10%;}
+
+.bottom-bar .lateral img.buttonlike:hover ~ span.tag {
+    transform: scale(1);
+    opacity: 1;
+    transition: 250ms ease-out;
+    transition-delay: 500ms;
+}
+
+.bottom-bar .info {
+    background-image: url('../assets/bottom-title.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.bottom-bar .info .jg,
+.bottom-bar .info #hour {
+    font-size: 2.5em;
+}
+
+.bottom-bar .info .jg {
+    color: #47bbe3;
+    animation: fadeOut 250ms ease-in-out 6s forwards;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -2vh);
+}
+
+.bottom-bar .info #hour {
+    font-family: 'Display';
+    font-size: 5em;
+    opacity: 0;
+    position: relative;
+    top: -2vh;
+    animation: fadeIn 250ms ease-in-out 6.5s forwards;
+}
+
+.bottom-bar .info #date {
+    position: absolute;
+    bottom: 2vh;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.grid {
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 250ms linear 3.2s forwards;
+    display: flex;
+    gap: 15px;
+    padding-inline: calc((98vw - 18vw * 4) / 2);
+    overflow-x: auto;
+    animation-duration: 1ms;
+}
+
+.grid {scrollbar-width: none;}
+.grid::-webkit-scrollbar {height: 0;}
+
+.prev {
+    position: fixed;
+    top: 36.5%; left: 5vw;
+    transform: translateY(-25%);
+    display: none;
+    justify-content: left;
+    align-items: center;
+    z-index: 3;
+}
+
+.prev .def {
+    height: 7vh;
+}
+
+.prev:hover .def {
+    animation: pdef-hover 100ms linear forwards;
+}
+
+@keyframes pdef-hover {
+    0% {width: 20%;}
+    50% {width: 35%;}
+    100% {width: 100%;}
+}
+
+.prev .hover {
+    transform: translateX(-1.4vh) scale(0);
+    transform-origin: left;
+    height: 12vh;
+    transition: 100ms;
+}
+
+.prev:hover .hover {
+    transform: translateX(-1.4vh) scale(1);
+}
+
+.next {
+    position: fixed;
+    top: 36.5%; right: 5vw;
+    transform: translateY(-25%);
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    z-index: 3;
+}
+
+.next .def {
+    height: 7vh;
+}
+
+.next:hover .def {
+    animation: ndef-hover 100ms linear forwards;
+}
+
+@keyframes ndef-hover {
+    0% {width: 20%;}
+    50% {width: 35%;}
+    100% {width: 100%;}
+}
+
+.next .hover {
+    transform: translateX(1.4vh) scale(0);
+    transform-origin: right;
+    height: 12vh;
+    transition: 100ms;
+}
+
+.next:hover .hover {
+    transform: translateX(1.4vh) scale(1);
+}
+
+.ch-c {
+    display: grid;
+    grid-template-columns: 18vw 18vw 18vw 18vw;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 15px;
+    margin-top: 7vh;
+}
+
+.ch-c .ch {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    aspect-ratio: 16/9; /* previously 1161/639 */
+}
+
+.ch-c .ch.blank {
+    background-image: url('../assets/channel-spritesheet.png');
+    background-size: calc(100% * 3) 100%;
+    animation: chblank 0.3s steps(3) infinite;
+    position: relative;
+}
+
+@keyframes chblank {
+    from {background-position-x: 0px;}
+    to {background-position-x: calc(50% * 3 - 1px);}
+}
+
+.ch-c .ch.occupied {
+    position: relative;
+}
+
+.ch-c .ch.occupied img,
+.ch-c .ch.occupied iframe {
+    width: 101%; height: 100%;
+    object-fit: cover;
+    position: relative;
+    clip-path: polygon(2% 7%, 6% 2%, 52% 1%, 95% 3%,
+    98% 8%, 100% 49%, 98% 92%, 95% 97%, 50% 99%, 5% 97%,
+    2% 93%, 0 50%);
+}
+
+.ch-c .ch.occupied::after {
+    position: absolute;
+    inset: 0;
+    width: 102%; height: 94%;
+    content: '';
+    background-image: url('../assets/channel-border.png');
+    background-size: 100% 100%;
+}
+
+.ch-c .ch.occupied .onhover {
+    position: absolute;
+    top: 0; left: 0;
+    width: 101%; height: 94%;
+    content: '';
+    background-image: url('../assets/channel-hover.png');
+    background-size: 100% 100%;
+    opacity: 0;
+    transition: 400ms ease;
+    transform: scale(0.94);
+    z-index: 2;
+}
+
+.ch-c .ch.occupied .onhover:hover {
+    display: block;
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.ch-c .ch.blank::before {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    content: '';
+    background-image: url('../assets/channel-wiilogo.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.ch-c .ch.blank::after {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    content: '';
+    background-image: url('../assets/channel-border.png');
+    background-size: 100% 100%;
+}
+
+.ch-trans-on {
+    animation: cht-on 0.2s ease-in 0.1s forwards;
+    opacity: 0;
+    transition: opacity 400ms;
+}
+
+.ch-trans-on .grid {
+    opacity: 0;
+    transition: opacity 200ms ease-out;
+}
+
+@keyframes cht-on {
+    0% {transform: scale(1);}
+    100% {transform: scale(4);}
+}
+
+.chsout-anim {
+    animation: chsout-anim 300ms ease-out forwards;
+}
+
+@keyframes chsout-anim {
+    from {transform: scale(3);}
+    to {transform: scale(1);}
+}
+
+body:has(.main-menu.ch-trans-on) .ch-selection {
+    animation: chs-anim 300ms ease-out 0.3s forwards;
+    display: flex;
+    z-index: 200;
+}
+
+@keyframes chs-anim {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    70% {opacity: 0.4;}
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.ch-c .ch.occupied span.tag {
+    background-color: white;
+    border: 0.1vh solid gray;
+    border-radius: 500px;
+    box-shadow: 0 0.5vh 1vh #aaaaaa88;
+    padding: 1.5vh 4vh;
+    line-height: 3.5vh;
+    font-size: 3.5vh;
+    position: absolute;
+    bottom: -25%;
+    left: 50%;
+    width: max-content;
+    max-width: 100%;
+    z-index: 2;
+    transform: translateX(-50%) scale(0.95);
+    opacity: 0;
+    transition: 250ms ease-out;
+}
+
+.ch-c .ch.occupied .onhover:hover ~ span.tag {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    transition: 250ms ease-out;
+    transition-delay: 500ms;
+}
+
+.ch-c .ch.occupied .spinnin {
+    position: absolute;
+    height: 70%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    top: 45%;
+    transform: translateY(-50%);
+    left: -100%;
+    opacity: 0;
+}
+
+.disc-insert-anim {animation: disc-insert 300ms ease-out 1s forwards;}
+@keyframes disc-insert {
+    from {opacity: 0; left: -100%;}
+    to {opacity: 0.6; left: -40%;}
+}
+
+.ch-selection {
+    cursor: url('../assets/cursor.png'), auto;
+    position: absolute;
+    z-index: 30;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform: scale(1);
+    opacity: 0;
+    display: none;
+}
+
+.ch-selection .thecontent {
+    width: max-content;
+    position: relative;
+}
+
+.ch-selection .thecontent img {
+    width: 65vw;
+    aspect-ratio: 1161/639;
+    margin-bottom: -11px;
+    pointer-events: none;
+    animation-fill-mode: forwards;
+}
+
+.ch-selection .thecontent .tl,
+.ch-selection .thecontent .tr,
+.ch-selection .thecontent .bl,
+.ch-selection .thecontent .br {
+    background-size: contain;
+    background-repeat: no-repeat;
+    aspect-ratio: 1/1;
+    width: 15vw;
+    position: absolute;
+}
+
+.ch-selection .thecontent .tl {
+    background-image: url('../assets/border-topleft.png');
+    top: -1px; left: -1px;
+}
+
+.ch-selection .thecontent .tr {
+    background-image: url('../assets/border-topright.png');
+    top: -1px; right: -1px;
+}
+
+.ch-selection .thecontent .bl {
+    background-image: url('../assets/border-bottomleft.png');
+    bottom: -1px; left: -1px;
+    background-position: bottom center;
+}
+
+.ch-selection .thecontent .br {
+    background-image: url('../assets/border-bottomright.png');
+    bottom: -1px; right: -1px;
+    background-position: bottom center;
+}
+
+.ch-selection .thecontent .buttons {
+    background-image: url('../assets/splash-bar.png');
+    background-size: 4px;
+    border-top: 0px solid black;
+    margin-top: 0;
+    height: 17vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.ch-selection .thecontent .buttons a {
+    background-image: url('../assets/btn-texture.png');
+    background-size: contain;
+    background-repeat: repeat-x;
+    padding-top: 0.5vw;
+    width: 15vw;
+    height: 5vw;
+    color: #444;
+    font-size: 2vw;
+    text-align: center;
+    cursor: inherit;
+    position: relative;
+}
+
+.ch-selection .thecontent .buttons a::before {
+    content: '';
+    background-image: url('../assets/btn-left.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 2.5vw;
+    position: absolute;
+    top: 0;
+    left: -2.4vw;
+}
+
+.ch-selection .thecontent .buttons a::after {
+    content: '';
+    background-image: url('../assets/btn-right.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 2.5vw;
+    position: absolute;
+    top: 0;
+    right: -2.5vw;
+}
+
+#homeNotAv {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    top: 7vh; left: 10vw;
+    height: 10vh;
+    aspect-ratio: 1/1;
+    pointer-events: none;
+    animation: hnotav 2s linear forwards;
+    z-index: 99;
+}
+
+@keyframes hnotav {
+    0% {opacity: 0;}
+    5% {opacity: 1;}
+    90% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+.home-menu {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    color: #eee;
+    position: absolute;
+    inset: 0;
+    display: none;
+    grid-template-columns: 1fr;
+    grid-template-rows: 15vh 65vh 20vh;
+    transition: background-color 150ms;
+    z-index: 90;
+}
+
+.home-menu .bar-top {
+    background-color: black;
+    border-bottom: 2px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding-inline: 3vw;
+    animation: home-btop 200ms linear 100ms forwards;
+    transform: translateY(-15vh);
+}
+
+@keyframes home-btop {
+    from {transform: translateY(-15vh);}
+    to {transform: translateY(0vh);}
+}
+
+.home-menu .bar-top:hover {
+    background-color: none;
+    background-image: linear-gradient(to bottom, #0a356b, #2ba8e1);
+}
+
+.home-menu .bar-top span {
+    font-size: 3em;
+    transform: translateY(1vh);
+}
+
+.home-menu .bar-top img {
+    height: 7vh;
+    margin-bottom: 2vh;
+}
+
+.home-menu .in-between {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.home-menu .in-between a  {
+    background-image: url('../assets/btn-texture.png');
+    background-size: contain;
+    background-repeat: repeat-x;
+    padding-top: 3vw;
+    width: 15vw;
+    height: 7vw;
+    color: #444;
+    font-size: 2vw;
+    text-align: center;
+    cursor: inherit;
+    position: relative;
+}
+
+.home-menu .in-between a::before {
+    content: '';
+    background-image: url('../assets/btn-left.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 5vw;
+    position: absolute;
+    top: 0;
+    left: -4.45vw;
+}
+
+.home-menu .in-between a::after {
+    content: '';
+    background-image: url('../assets/btn-right.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 5vw;
+    position: absolute;
+    top: 0;
+    right: -4.9vw;
+}
+
+.home-menu .bar-bottom {
+    background-color: black;
+    border-top: 2px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5vw;
+    padding-inline: 2vw;
+    animation: home-bbottom 200ms linear 100ms forwards;
+    transform: translateY(20vh);
+}
+
+@keyframes home-bbottom {
+    from {transform: translateY(20vh);}
+    to {transform: translateY(0vh);}
+}
+
+.home-menu .bar-bottom:hover {
+    background-color: none;
+    background-image: linear-gradient(to top, #0a356b, #2ba8e1);
+}
+
+.home-menu .bar-bottom .remote {
+    width: 10vw;
+    position: relative;
+    top: -10vh;
+}
+
+.home-menu .bar-bottom:hover .remote {
+    top: -17.5vh;
+}
+
+.home-menu .bar-bottom div .battery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 2vh;
+    transform: translateY(-50%);
+}
+
+.home-menu .bar-bottom div .battery div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+    padding-inline: 2vw;
+    border-right: 2px solid white;
+}
+
+.home-menu .bar-bottom:hover div .battery div:nth-child(1) {
+    /* animation: hmbbdbd-hover 3s ease-in-out 100ms infinite;
+    aparently this means too much for the cpu/gpu, yikes */
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+@keyframes hmbbdbd-hover {
+    0% {background-color: black;}
+    50% {background-color: #243924;}
+    100% {background-color: black;}
+}
+
+.home-menu .bar-bottom div .battery div:nth-child(2),
+.home-menu .bar-bottom div .battery div:nth-child(3),
+.home-menu .bar-bottom div .battery div:nth-child(4) {
+    filter: brightness(40%);
+}
+
+.home-menu .bar-bottom div .battery div:nth-child(4) {
+    border: none !important;
+}
+
+.home-menu .bar-bottom div .battery span {
+    font-size: 2em;
+    line-height: 1vh;
+}
+
+.home-menu .bar-bottom div .battery img {
+    height: 3vw;
+}
+
+.home-menu .bar-bottom div .text {
+    font-size: 2.5em;
+    text-align: center;
+    line-height: 3vh;
+}
+
+.returndialog {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 300;
+}
+
+.returndialog .msgbox {
+    background-image: url("../assets/bg-pattern.png");
+    width: 100vh; height: 70vh;
+    border-radius: 1vw;
+    border-top: 3vh solid #c7c7c7;
+    border-bottom: 3vh solid #c7c7c7;
+    position: relative;
+    transform: translateY(-100vh);
+    animation: rdialogmsgbox-appear 300ms cubic-bezier(0, 0, 0.29, 1) 0.2s forwards;
+}
+
+@keyframes rdialogmsgbox-appear {
+    from {transform: translateY(-100vh);}
+    to {transform: translateY(0);}
+}
+
+.returndialog .msgbox .text {
+    color: #777;
+    font-family: serif;
+    font-size: 2.6em;
+    letter-spacing: 0.4vh;
+    line-height: 8vh;
+    text-align: center;
+    margin-top: 20vh;
+}
+
+.returndialog .msgbox .actions {
+    position: absolute;
+    bottom: 2vh; left: 0; right: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+.returndialog .msgbox .actions a  {
+    background-image: url('../assets/btn-texture.png');
+    background-size: contain;
+    background-repeat: repeat-x;
+    padding-top: 0.5vw;
+    width: 35vh;
+    height: 5.5vw;
+    color: #444;
+    font-size: 2.5vw;
+    text-align: center;
+    cursor: inherit;
+    position: relative;
+    transform: translateX(4vw) scale(1);
+    transition: 150ms;
+}
+
+.returndialog .msgbox .actions a::before {
+    content: '';
+    background-image: url('../assets/btn-left.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 5vw;
+    position: absolute;
+    top: 0;
+    left: -2.6vw;
+}
+
+.returndialog .msgbox .actions a::after {
+    content: '';
+    background-image: url('../assets/btn-right.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 5vw;
+    position: absolute;
+    top: 0;
+    right: -4.9vw;
+}
+
+.returndialog .msgbox .actions a:hover {
+    transform: translateX(4vw) scale(1.05);
+}
+
+/*
+too sick to be seen
+
+.returndialog .msgbox .actions a:active {
+    animation: rdialogmsg-a 200ms linear forwards;
+    transition: 100ms;
+}
+
+@keyframes rdialogmsg-a {
+    0% {
+        transform: translate(4vw) scale(1);
+        filter: brightness(500%);
+    }
+    100% {
+        transform: translate(4vw) scale(1.05);
+        filter: brightness(100%);
+    }
+}
+*/
+
+.settings {
+    display: none;
+    position: absolute;
+    inset: 0;
+    z-index: 80;
+    background-color: #000;
+    animation: fadeIn 500ms ease-out forwards;
+}
+  
+.settings-content {
+    width: 100%; height: 100%;
+    display: none;
+    background-image: url('../assets/settings-main-bg.png');
+    background-size: 1.3vh;
+}
+
+a.alt-btn  {
+    background-image: url('../assets/alt-btn-texture.png');
+    background-size: contain;
+    background-repeat: repeat-x;
+    padding-top: 0.8vh;
+    padding-inline: 1vh;
+    height: 10vh;
+    color: #444;
+    font-size: 4.5vh;
+    text-align: center;
+    cursor: inherit;
+    position: relative;
+    transition: 150ms;
+}
+
+a.alt-btn::before {
+    content: '';
+    background-image: url('../assets/alt-btn-left.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 5vw;
+    position: absolute;
+    top: 0;
+    left: -2.6vw;
+}
+
+a.alt-btn::after {
+    content: '';
+    background-image: url('../assets/alt-btn-right.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 5vw;
+    position: absolute;
+    top: 0;
+    right: -4.9vw;
+}
+
+a.alt-btn:hover {
+    transform: scale(1.1);
+}
+
+.settings-content .topbar {
+    background-image: url('../assets/settings-topbar.png');
+    background-repeat: repeat-x;
+    background-size: contain;
+    height: 15vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 82;
+}
+
+.settings-content .topbar img {
+    height: 40%;
+    margin: 0 10vh 2vh 0;
+}
+
+.settings-content .bottombar {
+    background-image: url('../assets/settings-bottombar.png');
+    background-repeat: repeat-x;
+    background-size: contain;
+    height: 20vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 82;
+}
+
+.settings-content .bottombar a {
+    margin: 4vh 0 0 15vh;
+    width: 25vh;
+}
+
+.settings-content .cells {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20vh;
+    height: 95vh;
+    margin-top: 7.5vh;
+    transform: translateY(-100%);
+    animation: scontcells 250ms ease-out 1s forwards;
+}
+
+@keyframes scontcells {
+    from {transform: translateY(-100%);}
+    to {transform: translateY(0%);}
+}
+
+.settings-content .cells .info,
+.settings-content .cells .stngs {
+    background-image: url('../assets/info-credits.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 50vh;
+    aspect-ratio: 1/1;
+}
+
+.settings-content .cells .stngs {
+    background-image: url('../assets/wii-settings.png');
+}
+
+.msgboard {
+    background-image: linear-gradient(to bottom, #cecfd7, #f0f0f0, #cecfd7);
+    position: absolute;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    animation: bounce-in-right 500ms ease forwards;
+}
+
+/* animation from 
+https://codepen.io/nelledejones/pen/gOOPWrK */
+
+@keyframes bounce-in-right {
+    0% {
+      opacity: 0;
+      transform: translateY(2000px);
+    }
+    60% {
+      opacity: 1;
+      transform: translateY(-30px);
+    }
+    80% { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+}
+
+.msgboard .bottom {
+    position: absolute;
+    bottom: 2vh; left: 0; right: 0;
+    width: 100vw;
+    height: 17vh;
+}
+
+.msgboard .bottom .lateral {
+    float: right;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.msgboard .bottom .lateral .right-btn {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 23vh;
+}
+
+.msgboard .bottom .lateral .back-btn {
+    height: 75%;
+    position: absolute;
+    right: 7vh;
+}
+
+.msgboard .bottom span.tag {
+    background-color: white;
+    border: 0.1vh solid gray;
+    border-radius: 500px;
+    box-shadow: 0 0.5vh 1vh #aaaaaa88;
+    padding: 1.5vh 4vh;
+    line-height: 3.5vh;
+    font-size: 3.5vh;
+    position: absolute;
+    top: -25%; right: 3vh;
+    width: max-content;
+    z-index: 2;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: 250ms ease-out;
+}
+
+.msgboard .bottom .lateral .back-btn:hover ~ span.tag {
+    transform: scale(1);
+    opacity: 1;
+    transition: 250ms ease-out;
+    transition-delay: 500ms;
+}
+
+.msgboard .bottom #date2 {
+    position: absolute;
+    bottom: 2vh;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.msgboard .bg {
+    background-image: url('../assets/bg-pattern.png');
+    position: absolute; inset: 0;
+    z-index: 2;
+    opacity: 0.8;
+    display: none;
+    filter: brightness(50%);
+}
+
+.msgboard .card {
+    background-color: #fff;
+    box-shadow: 2vh 2vh #0000001e;
+    width: 30vh; min-height: 15vh;
+    padding-bottom: 4vh;
+    border: 0.25vh #a0a0a0 solid;
+    border-top: 3vh #a0a0a0 solid;
+    border-radius: 3vh;
+    outline: 0.75vh white solid;
+    position: absolute;   
+}
+
+.msgboard .card .mii {
+    height: 8vh;
+    margin: 2vh 0 0 3vh;
+}
+
+.msgboard .card span {
+    font-family: serif;
+    color: #888;
+    font-size: 3vh;
+    text-align: center;
+    line-height: 5vh;
+    border-bottom: 0.1vh solid #3bb7ff;
+    position: absolute;
+    bottom: 2vh; left: 1vh; right: 1vh;
+}
+
+.msgboard .opened .alt-btn.back {
+    position: absolute;
+    bottom: 5vh; left: 10vh;
+}
+
+.msgboard .opened {
+    z-index: 3;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 250ms ease-in forwards;
+}
+
+.msgboard .memo {
+    background-image: url('../assets/wii-logo-memo.svg');
+    background-repeat: no-repeat;
+    background-size: 10%;
+    background-position: center 95%;
+    background-color: #fff;
+    box-shadow: 2vh 2vh #0000004b;
+    width: 65vh; min-height: 30vh;
+    padding-bottom: 4vh;
+    border: 0.25vh #a0a0a0 solid;
+    border-top: 7vh #a0a0a0 solid;
+    border-radius: 3vh;
+    outline: 0.75vh white solid;
+    position: absolute;
+    animation: msgcard-appear 250ms ease-out forwards;
+}
+
+@keyframes msgcard-appear {
+    from {transform: scale(0);}
+    to {transform: scale(1);}
+}
+
+.msgboard .memo .title {
+    margin-top: -6.5vh;
+    color: white;
+    font-size: 3vh;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.msgboard .memo .mii {
+    height: 10vh;
+    margin: 2vh 0 -3vh 6vh;
+}
+
+.msgboard .memo .lines {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 5vh 2vh;
+}
+
+.msgboard .memo .lines span,
+.msgboard .memo .lines a {
+    font-family: serif;
+    color: #888;
+    font-size: 3vh;
+    line-height: 5vh;
+    border-bottom: 0.1vh solid gray;
+    padding-left: 5vh;
+}
+
+.msgboard .memo .lines a:hover {
+    text-decoration: 0.3vh #3bb7ff underline;
+}
+
+@media (max-aspect-ratio: 4/3) {
+    .ch-c .ch {
+        aspect-ratio: 4/3;
+    }
+    .ch-selection .thecontent img {
+        width: 90vw;
+    }
+    .ch-selection .thecontent .buttons a {
+        padding-top: 1vw;
+        width: 25vw;
+        height: 7vw;
+        font-size: 3vw;
+    }
+    .ch-selection .thecontent .buttons a::before {
+        width: 4vw;
+        left: -3.5vw;
+    }
+    .ch-selection .thecontent .buttons a::after {
+        width: 4vw;
+        right: -4vw;
+    }
+    .bottom-bar .lateral span.tag,
+    .ch-c .ch.occupied span.tag {
+        font-size: 2.5vh;
+        padding: 1vh 3vh;
+    }
+    .home-menu .in-between a {
+        padding-top: 4vw;
+        width: 25vw;
+        height: 10vw;
+        font-size: 3vw;
+    }
+    .home-menu .in-between a::before {
+        width: 10vw;
+        left: -6vw;
+    }
+    .home-menu .in-between a::after {
+        width: 10vw;
+        right: -9.8vw;
+    }
+    .returndialog .msgbox .actions a {
+        transform: translateX(5.5vw) scale(1);
+    }
+    .returndialog .msgbox .actions a:hover {
+        transform: translateX(5.5vw) scale(1.1);
+    }
+    .home-menu .bar-bottom .remote {
+        width: 15vw;
+    }
+    .home-menu .bar-bottom div .battery div {
+        padding: 0.5vh 2vw;
+    }
+    .bottom-bar {
+        height: 25vh;
+    }
+    .bottom-bar .lateral .left-btn,
+    .bottom-bar .lateral .right-btn {
+        width: 24vh;
+    }
+    a.alt-btn::before {
+        left: -4vw;
+    }
+}

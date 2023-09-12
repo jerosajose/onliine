@@ -1,0 +1,109 @@
+<!--
+
+    If you're the administrator of this site,
+    it's better to not touch anything here.
+    This page is (at the moment) mainly used
+    for version sync with my servers and updating.
+
+    Visit the GitHub repository for more information.
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/jquery.js"></script>
+    <script>
+        if (document.addEventListener) {
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                const nohome4u = document.getElementById('homeNotAv');
+                nohome4u.style.display = 'block';
+                setTimeout(() => {nohome4u.style.display = 'none';}, 2000);
+            }, false);
+        }
+        else {
+            document.attachEvent('oncontextmenu', function() {
+                alert("why u clickin");
+                window.event.returnValue = false;
+            });
+        }
+    </script>
+    <style>
+        .settings, .settings-content {
+            display: block;
+        }
+        .topbar {
+            justify-content: space-evenly !important;
+        }
+        .version {
+            color: #ccc;
+            font-size: 3vh;
+        }
+        .header {
+            background-color: white;
+            color: #333;
+            font-size: 4.5vh;
+            line-height: 7vh;
+            padding: 0 20vh 0 2vh;
+            border-top-left-radius: 1vh;
+            border-top-right-radius: 4vh;
+        }
+        gray {
+            color: #ccc;
+        }
+        div.ver {
+            color: white;
+            text-align: center;
+            font-size: 4vh;
+            line-height: 7vh;
+            position: absolute;
+            top: 40vh;
+            left: 50vw;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <img src="../assets/nohome4u.png" id="homeNotAv" />
+    <div class="settings">
+        <div class="settings-content">
+            <div class="topbar">
+                <div class="header">Wii System Settings <gray>(WIP)</gray></div>
+                <div class="version">Ver 4.3E</div>
+            </div>
+            <div class="ver">
+                Website version&nbsp;<span id="versionprint">a</span><br>
+                Onliine latest available: <span id="updatedver"></span><br>
+                Based upon Wii System 4.3E
+            </div>
+            <div class="bottombar">
+                <a class="alt-btn" href="/">Back</a>
+                <a class="alt-btn" href="#" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        const url = "//jerosgamer.me/res/sysver.txt";
+        const localver = "1.0";
+        document.getElementById("versionprint").textContent = localver;
+
+        $.get(url, function(fileContent) {
+            document.getElementById("updatedver").textContent = fileContent.trim();
+            if (fileContent.trim() === localver.trim()) {
+                console.log("Update checked: system is up to date");
+            }
+            else if (fileContent.trim() <= localver.trim()) {
+                alert("bro do be living in the future, you're running on a version that hasn't been released yet lol");
+            }
+            else {
+                alert("There's an update available for Wii System.\nPlease contact the administrator to perform the update.\n\nLatest available: " + fileContent.trim() + "\nYou're running on: " + localver);
+            }
+        });
+    </script>
+</body>
+</html>

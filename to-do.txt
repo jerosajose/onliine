@@ -1,0 +1,21 @@
+original banner size:
+387x213
+
+upscale:
+387 => 1161
+213 => 639
+deprecated, better use 16:9
+
+"extra" channels:
+- homebrew (might)
+- the bottom gear channel™
+
+to-do:
+- mobile adaption
+- everybody votes channel (for user feedback on the channel and bug reporting)
+- news wiiconnect24 channel (changelog of the website)
+- finish the rest of the channels if possible (consider Mii)
+
+future considerations:
+- dolphin vm in wasm
+- desktop app with electron 🤝 working shop channel

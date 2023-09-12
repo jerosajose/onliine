@@ -1,0 +1,59 @@
+/* Styling for embedded HTML */
+
+@font-face {
+    font-family: 'Regular';
+    src: url('../fonts/FOT-RodinNTLG\ Pro\ DB.otf');
+}
+
+@font-face {
+    font-family: 'Bold';
+    src: url('../fonts/FOT-Rodin\ Pro\ B.otf');
+}
+
+@font-face {
+    font-family: 'TitleBold';
+    src: url('../fonts/continuum-bold.ttf');
+}
+
+@font-face {
+    font-family: 'TitleMed';
+    src: url('../fonts/continuum-medium.ttf');
+}
+
+@font-face {
+    font-family: 'Display';
+    src: url('../fonts/digital-7\ \(mono\).ttf');
+}
+
+
+@keyframes fadeIn {
+    from {opacity: 0;} to {opacity: 1;}
+}
+
+@keyframes fadeOut {
+    from {opacity: 1;} to {opacity: 0;}
+}
+
+.fadeOut {
+    animation: fadeOut 250ms ease-out forwards;
+}
+
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    font-smooth: always;
+    scroll-behavior: smooth;
+    transition: 200ms;
+}
+
+body {
+    font-family: 'Regular';
+}
+
+strong {
+    font-family: 'Bold';
+}

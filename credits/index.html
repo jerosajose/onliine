@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Credits</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script>
+        if (document.addEventListener) {
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                const nohome4u = document.getElementById('homeNotAv');
+                nohome4u.style.display = 'block';
+                setTimeout(() => {nohome4u.style.display = 'none';}, 2000);
+            }, false);
+        }
+        else {
+            document.attachEvent('oncontextmenu', function() {
+                alert("why u clickin");
+                window.event.returnValue = false;
+            });
+        }
+    </script>
+    <style>
+        body {
+            color: white;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Bold';
+            margin-bottom: 0;
+            margin-top: 100px;
+        }
+        h1 {
+            margin-top: 200px;
+        }
+        .colabo {
+            background-image: url('../assets/logotype.png');
+            background-repeat: no-repeat;
+            background-size: 50vw;
+            background-position: center;
+            position: absolute;
+            inset: 0;
+            opacity: 1;
+            animation: colabo 3s ease-out 1s forwards;
+        }
+        @keyframes colabo {
+            from {opacity: 1;}
+            to {opacity: 0; display: none;}
+        }
+        .scrolling {
+            text-align: center;
+            width: 800px;
+            margin-inline: auto;
+            font-size: 20px;
+            line-height: 30px;
+            animation: scroll 100s linear 5s forwards;
+            animation-play-state: running;
+            transition: 100ms;
+        }
+        .scrolling:hover {
+            animation-play-state: paused;
+            transition: 100ms;
+        }
+        @keyframes scroll {
+            from {transform: translateY(0%);}
+            to {transform: translateY(-100%);}
+        }
+        .scrolling p {
+            cursor: inherit;
+        }
+        .padding {
+            height: 100vh;
+            width: 1px;
+        }
+        a {
+            color: #aacbff;
+        }
+        a:hover {
+            text-decoration: 0.5vh underline solid;
+        }
+    </style>
+</head>
+<body>
+    <img src="../assets/nohome4u.png" id="homeNotAv" />
+    <div class="colabo"></div>
+    <div class="scrolling">
+        <div class="padding"></div>
+        <h2>&#9888;&nbsp;WARNING-HEALTH AND SAFETY</h3>
+        <p>
+            BEFORE PLAYING, READ YOUR OPERATIONS MANUAL
+            FOR IMPORTANT INFORMATION ABOUT YOUR HEALTH
+            AND SAFETY.
+        </p>
+        <p>
+            Also online at<br>
+            www.nintendo.com/healthsafety
+        </p>
+
+        <h1>Directed by</h1>
+        <p>JerosGamer89 (me)</p>
+
+        <h1>Produced by</h1>
+        <p>My free time</p>
+
+        <h1>Jokes aside</h1>
+        <p>
+            This website has been created using HTML, CSS, JavaScript
+            and jQuery, with the help of:
+            
+            <h3>wii.js.org by @andrewplus</h3>
+            <p>
+                The main inspiration and motivation to build this site. Even though they
+                look very similar, this has been made from scrath, using all the UI assets
+                at his project with some tweaks, mainly to have an easy start with the site.
+                <br><br>
+                Now it's sort of abandoned, but it still runs great, check him out on GitHub.
+            </p>
+
+            <h3>The Spriters Resource &ndash; spriters-resource.com/wii</h3>
+            <p>
+                It's an amazing site with a really enthusiastic community. Pretty much all the
+                images left to complete the site, that weren't on andrew's site, have been taken
+                from there. All the content that peopled uploaded there plus some CSS animations
+                made possible the main menu channel arts.
+            </p>
+
+            <h3>Dolphin Emulator & YouTube tour videos</h3>
+            <p>
+                Another great source of inspiration to know how is exactly everything is styled.
+                System audio effects have also been obtained through YouTube and SoundCloud.
+            </p>
+
+            <h3>EZGIF &ndash; ezgif.com</h3>
+            <p>
+                Really, really handy website for whatever thing you wanna do with GIFs.
+                It's been mainly used with video conversion and some trickery for channel
+                banners videos.
+            </p>
+
+            <h3>Fontworks &ndash; lets.fontworks.co.jp</h3>
+            <p>
+                The original authors of the famous Rodin font used on both Wii and Wii U.
+            </p>
+
+            <h3>Other tools used</h3>
+            <p>
+                Gyazo (for video (banner) capture), Nintendo's web (Mii Studio), GIMP (image editing),
+                Inkscape (logo design)
+            </p>
+
+            <h1>Not affiliated</h1>
+            <p>
+                Of course, I am not affiliated with Nintendo, and Wii, the Wii logo and many
+                other things in the website (not to say almost everything) is copyrighted
+                by Nintendo. Please Nintendo don't take my site down, I'm not a game modder.
+            </p>
+
+            <h1>Licensing</h1>
+            <p>
+                The entirety of this project is licensed and protected under a
+                GNU Affero General Public License 3.0. More information about
+                the license can be found in <a href="//github.com/Ascript89/onliine">the GitHub repository</a>
+                and <a href="//choosealicense.com/licenses/agpl-3.0/">this website</a>.
+            </p>
+
+            <h1></h1>
+            <img src="../assets/logotype-notext.png" style="height: 15vh; pointer-events: none;" />
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+body {
+    background-color: #eee;
+}
+
+* {cursor: url('../assets/cursor.png'), auto;}
+
+.header {
+    font-size: 6vh;
+    color: #3bb7ff;
+    border-bottom: 0.5vh dotted #bbb;
+    padding: 0 20vw;
+    margin-top: 2vh;
+}
+
+h2 {color: #333}
+
+.titles, h2 {
+    padding: 0 20vw;
+}
+
+.titles {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh;
+}
+
+.titles .product {
+    box-shadow: inset var(--blue) 0 0 10vh;
+    border: 0.25vh var(--blue) solid;
+    border-radius: 1.25vh;
+    padding: 2vh 3vh;
+    display: grid;
+    grid-template-columns: max-content auto;
+}
+
+.titles .product img {
+    width: 20vh;
+    border: 0.25vh var(--blue) solid;
+}
+
+.titles .product div span {
+    margin-left: 2vh;
+}
+
+.titles .product div hr {
+    margin: 0;
+}
+
+.titles .product div .title {
+    color: #666;
+    font-size: 3vh;
+    line-height: 0;
+}
+
+.bottom {
+    padding: 1vh 20vw;
+    margin-bottom: 3vh;
+    border-top: 0.5vh dotted #bbb;
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom * {
+    width: 30%;
+}
+
+.bottom a {
+    box-shadow: inset var(--blue) 0 0 0.75vh;
+    border: 0.25vh var(--blue) solid;
+    border-radius: 1.25vh;
+    font-size: 3vh;
+    padding: 1.5vh 0vh;
+    text-align: center;
+}
+
+.bottom div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.bottom div .pt {
+    color: var(--blue);
+    font-size: 5vh;
+    line-height: 3vh;
+}
+
+@media (max-aspect-ratio: 4/3) {
+    .header, .titles, .bottom, h2
+    {padding: 0 3vw;}
+}

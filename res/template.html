@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Name | Onliine</title>
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="/js/script.js"></script>
+    <script src="/js/jquery.js"></script>
+    <style>body {animation: fadeIn 500ms linear forwards}</style>
+
+    <meta property="og:site_name" content="Onliine" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Onliine Web" />
+	<meta property="og:description" content="Wii System simulator based on the latest version released by Nintendo" />
+	<meta id="meta-image" property="og:image" itemprop="image" content="" />
+	<link rel="apple-touch-icon" href="" />
+	<meta name="author" content="JerosGamer89" />
+    <meta name="description" content="Wii System simulator based on the latest version released by Nintendo">
+	<meta name="keywords" content="riimake,onliine,wii,homebrew,wii simulator,wii menu,wii web" />
+    <meta name="theme-color" content="#222222" />
+    <meta name="apple-mobile-web-app-status-bar" content="#222222" />
+</head>
+<body>
+    <div class="home-menu">
+        <div class="bar-top close-pause-menu">
+            <span>HOME Menu</span>
+            <img src="/assets/home-close.png" />
+        </div>
+        <div class="in-between">
+            <a class="buttonlike backtomenu">Wii Menu</a>
+            <a class="buttonlike" onclick="window.location.reload()">Reset</a>
+        </div>
+        <div class="bar-bottom">
+            <img src="/assets/remote.png" class="remote" />
+            <div>
+                <div class="battery">
+                    <div>
+                        <span>P1</span>
+                        <img src="/assets/power-full.png" />
+                    </div>
+                    <div>
+                        <span>P2</span>
+                        <img src="/assets/power-empty.png" />
+                    </div>
+                    <div>
+                        <span>P3</span>
+                        <img src="/assets/power-empty.png" />
+                    </div>
+                    <div>
+                        <span>P4</span>
+                        <img src="/assets/power-empty.png" />
+                    </div>
+                </div>
+                <div class="text">Wii Remote Settings</div>
+            </div>
+        </div>
+    </div>
+    <div class="returndialog">
+        <div class="msgbox">
+            <div class="text">
+                Return to the Wii Menu?<br>
+                (Anything not saved will be lost.)
+            </div>
+            <div class="actions">
+                <a onclick="rm2();">Yes</a>
+                <a class="closedialog">No</a>
+            </div>
+        </div>
+    </div>
+    <div class="ui-sfx">
+        <audio id="hover" src="audio/button-hover.mp3"></audio>
+        <audio id="select" src="audio/button-select.mp3"></audio>
+        <audio id="back" src="audio/back.mp3"></audio>
+        <audio id="homeIn" src="audio/home-in.mp3"></audio>
+        <audio id="homeOut" src="audio/home-out.mp3"></audio>
+        <audio id="rm1" src="audio/returntomenu-1.mp3"></audio>
+        <audio id="rm2" src="audio/returntomenu-2.mp3"></audio>
+    </div>
+    <script>
+        // HOME/PAUSE MENU
+        if (document.addEventListener) {
+            document.addEventListener('contextmenu', function(e) {
+                homeIn();
+                $(".home-menu").css("display", "grid");
+                e.preventDefault();
+            }, false);
+        }
+        else {
+            document.attachEvent('oncontextmenu', function() {
+                alert("EXCEPTION HANDLED: Failed to open Home/Pause menu.\nPlease report any bugs to the Everybody Votes channel.");
+                window.event.returnValue = false;
+            });
+        }
+
+        $(".close-pause-menu").click(event => {
+            $(".home-menu").addClass("fadeOut");
+            setTimeout(() => {
+                $(".home-menu").css("display", "none");
+                $(".home-menu").removeClass("fadeOut");
+            }, 250);
+            bgmus(); homeOut();
+        });
+
+        $(".backtomenu").click(event => {
+            $(".returndialog").css("display", "flex");
+            rm1();
+        });
+
+        $(".closedialog").click(event => {
+            $(".returndialog").css("display", "none");
+        });
+    </script>
+</body>
+</html>

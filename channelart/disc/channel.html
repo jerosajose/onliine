@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wtf r u doin here</title>
+    <link rel="stylesheet" href="../../css/base.css" />
+    <style>
+        body {
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+        .bg {
+            width: 100vw;
+            height: 100vh;
+            background-color: #fff;
+            background-image: linear-gradient(to bottom, #f2f2f2, #fff);
+            background-position-y: 50vh;
+            background-size: 100vw 50vh;
+            background-repeat: no-repeat;
+            filter: blur(3px);
+        }
+        .align {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .disc {
+            height: 70vh;
+            opacity: 0.5;
+            animation: disc-anim 12s linear infinite;
+        }
+        @keyframes disc-anim {
+            0% {transform: rotateY(0deg);}
+            20% {transform: rotateY(180deg);}
+            50% {transform: rotateY(180deg);}
+            70% {transform: rotateY(360deg);}
+            100% {transform: rotateY(360deg);}
+        }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="align">
+        <img src="disc.png" class="disc" />
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wtf r u doin here</title>
+    <link rel="stylesheet" href="../../css/base.css" />
+    <style>
+        body {
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+        .miis {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            object-position: bottom;
+            z-index: 1;
+            animation: miis-anim 20s linear infinite;
+        }
+        @keyframes miis-anim {
+            0% {filter: contrast(100%) brightness(100%);}
+            45% {filter: contrast(100%) brightness(100%);}
+            50% {filter: contrast(20%) brightness(170%);}
+            95% {filter: contrast(20%) brightness(170%);}
+            100% {filter: contrast(100%) brightness(100%);}
+        }
+        .title {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-image: linear-gradient(to bottom, white, #bddfde);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-stroke: 1vw #95a4a1;
+            font-family: 'TitleBold';
+            letter-spacing: -1vh;
+            font-size: 50vw;
+            z-index: 2;
+            animation: title-anim 20s linear infinite;
+        }
+        @keyframes title-anim {
+            0% {opacity: 0;}
+            47% {opacity: 0;}
+            50% {opacity: 1;}
+            90% {opacity: 1;}
+            100% {opacity: 0;}
+        }     
+    </style>
+</head>
+<body>
+    <img src="miis.png" class="miis" />
+    <div class="title">Mii</div>
+</body>
+</html>
