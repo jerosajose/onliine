@@ -669,7 +669,7 @@ body:has(.main-menu.ch-trans-on) .ch-selection {
     grid-template-columns: 1fr;
     grid-template-rows: 15vh 65vh 20vh;
     transition: background-color 150ms;
-    z-index: 90;
+    z-index: 400;
 }
 
 .home-menu .bar-top {
