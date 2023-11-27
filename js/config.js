@@ -20,14 +20,36 @@ console.log(`user config:`, userConfig);
 
 // Default channels
 var def_channels = [
-    'disc',
-    'mii',
-    'photo',
-    'shop',
-    'news',
-    'onliine'
+    {
+        id: 'disc',
+        title: 'Disc Channel',
+        disc: true,
+    },
+    {
+        id: 'mii',
+        title: 'Mii Channel',
+    },
+    {
+        id: 'photo',
+        title: 'Photo Channel',
+    },
+    {
+        id: 'shop',
+        title: 'Onliine Shop Channel',
+        target: '/shop',
+    },
+    {
+        id: 'news',
+        title: 'News Channel',
+    },
+    {
+        id: 'onliine',
+        title: 'Onliine Channel',
+        target: '//github.com/Ascript89/onliine',
+    }
 ]
-// Set channels
+
+// Set channels if they aren't set
 if (!localStorage.getItem('onliine-channels')) {
     localStorage.setItem("onliine-channels", JSON.stringify(def_channels));
 }
