@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/script.js"></script>
     <script src="js/jquery.js"></script>
-    <script src="js/audio.js"></script>
     <script src="js/howler.min.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/config.js"></script>
 
     <meta property="og:site_name" content="Onliine" />
 	<meta property="og:type" content="website" />
@@ -26,16 +27,41 @@
 <body>
     <div class="splash">
         <div class="warning">
-            <img src="assets/healthsafety.png" class="healthsafety">
-            <span>Press <img src="" alt="A"> to continue.</span>
+            <div class="warning-container">
+                <div class="text">
+                    <h2><div class="warn-icon">&#9888;&nbsp;</div>WARNING-HEALTH AND SAFETY</h3>
+                    <p>
+                        BEFORE PLAYING, READ YOUR OPERATIONS MANUAL
+                        FOR IMPORTANT INFORMATION ABOUT YOUR HEALTH
+                        AND SAFETY.
+                    </p>
+                    <p>
+                        Also online at<br>
+                        www.nintendo.com/healthsafety
+                    </p>
+                </div>
+
+                <span>Press left click to continue.</span>
+            </div>
         </div>
-        <div class="loading">
+        <script>
+            if (document.location.search.includes('skipwarn')) {
+                startup('skipwarn');
+            } else {
+                setTimeout(() => {
+                    var warningSplash = document.querySelector('.splash .warning');
+                    warningSplash.addEventListener("click", startup(), true)
+                }, 2000);
+            }
+        </script>
+
+        <div class="loading disabled">
             <img src="assets/return.gif" class="channels" />
             <span class="tip"><strong>PRO TIP:</strong>&nbsp;Right-click to open the Wii pause menu</span>
         </div>
     </div>
 
-    <div class="main-menu">
+    <div class="main-menu disabled">
         <div class="grid">
             <div class="prev">
                 <img src="assets/prev-default.png" class="def" />
@@ -45,32 +71,32 @@
                 <div class="ch occupied" data-id="disc">
                     <img src="channelart/disc/disc.png" class="spinnin" />
                     <iframe src=""></iframe>
-                    <div class="onhover" onmouseover="hover()" onclick="zip()"></div>
+                    <div class="onhover" onmouseover="playSFX('button-hover.mp3', 0.2)" onclick="zip()"></div>
                     <span class="tag" id="discTag">Disc Channel</span>
                 </div>
                 <div class="ch occupied" data-id="mii">
                     <iframe src=""></iframe>
-                    <div class="onhover" onmouseover="hover()" onclick="zip()"></div>
+                    <div class="onhover" onmouseover="playSFX('button-hover.mp3', 0.2)" onclick="zip()"></div>
                     <span class="tag">Mii Channel</span>
                 </div>
                 <div class="ch occupied" data-id="photo">
                     <iframe src=""></iframe>
-                    <div class="onhover" onmouseover="hover()" onclick="zip()"></div>
+                    <div class="onhover" onmouseover="playSFX('button-hover.mp3', 0.2)" onclick="zip()"></div>
                     <span class="tag">Photo Channel</span>
                 </div>
                 <div class="ch occupied" data-id="shop" data-href="/shop">
                     <iframe src=""></iframe>
-                    <div class="onhover" onmouseover="hover()" onclick="zip()"></div>
+                    <div class="onhover" onmouseover="playSFX('button-hover.mp3', 0.2)" onclick="zip()"></div>
                     <span class="tag">Wii Shop Channel</span>
                 </div>
                 <div class="ch occupied" data-id="news">
                     <iframe src=""></iframe>
-                    <div class="onhover" onmouseover="hover()" onclick="zip()"></div>
+                    <div class="onhover" onmouseover="playSFX('button-hover.mp3', 0.2)" onclick="zip()"></div>
                     <span class="tag">News Channel</span>
                 </div>
                 <div class="ch occupied" data-id="onliine" data-href="//github.com/Ascript89/onliine">
                     <iframe src=""></iframe>
-                    <div class="onhover" onmouseover="hover()" onclick="zip()"></div>
+                    <div class="onhover" onmouseover="playSFX('button-hover.mp3', 0.2)" onclick="zip()"></div>
                     <span class="tag">Onliine Channel</span>
                 </div>
                 <div class="ch blank"></div>
@@ -103,7 +129,7 @@
         <div class="bottom-bar">
             <div class="lateral left">
                 <img src="assets/left-button.png" class="left-btn" />
-                <img src="assets/wii-button.png" class="wii-btn buttonlike" onclick="startAudio()" />
+                <img src="assets/wii-button.png" class="wii-btn buttonlike" onclick="playSFX('start.mp3', userConfig.sfxVol)" />
                 <span class="tag">Wii Settings</span>
             </div>
             <div class="info">
@@ -113,7 +139,7 @@
             </div>
             <div class="lateral right">
                 <img src="assets/right-button.png" class="right-btn" />
-                <img src="assets/mail-button.png" class="diary-btn buttonlike" onclick="startAudio()" />
+                <img src="assets/mail-button.png" class="diary-btn buttonlike" onclick="playSFX('start.mp3', userConfig.sfxVol)" />
                 <span class="tag">Wii Message Board</span>
             </div>
         </div>
@@ -121,7 +147,7 @@
 
     <div class="msgboard">
         <div class="bg"></div>
-        <div class="card buttonlike" onclick="letterIn()">
+        <div class="card buttonlike" onclick="playSFX('letter-in.mp3', userConfig.sfxVol)">
             <img src="assets/petermiiffin-head.png" class="mii" /><br>
             <span>Hello Lois</span>
         </div>
@@ -221,20 +247,7 @@
     </div>
 
     <div class="ui-sfx">
-        <audio id="startup" src="audio/startup.mp3"></audio>
-        <audio id="bg-music" src="audio/bg-music.mp3" loop></audio>
-        <audio id="hover" src="audio/button-hover.mp3"></audio>
-        <audio id="select" src="audio/button-select.mp3"></audio>
-        <audio id="zip" src="audio/zip.mp3"></audio>
-        <audio id="back" src="audio/back.mp3"></audio>
-        <audio id="start" src="audio/start.mp3"></audio>
         <audio id="chSpec" src=""></audio>
-        <audio id="homeIn" src="audio/home-in.mp3"></audio>
-        <audio id="homeOut" src="audio/home-out.mp3"></audio>
-        <audio id="rm1" src="audio/returntomenu-1.mp3"></audio>
-        <audio id="rm2" src="audio/returntomenu-2.mp3"></audio>
-        <audio id="nextprev" src="audio/nextprev.mp3"></audio>
-        <audio id="letterIn" src="audio/letter-in.mp3"></audio>
     </div>
 
     <script>
@@ -279,8 +292,8 @@
 
         // CHANNEL START
         function start() {
-            var audio = document.getElementById("start");
-            audio.volume = 0.4; audio.play();
+            playSFX('start.mp3', userConfig.sfxVol);
+            
             if ($(".letsago").attr("data-start")) {
                 setTimeout(() => {document.body.classList.add("fadeOut");}, 1000);
                 setTimeout(() => {window.location.href = $(".letsago").data("start");}, 2000);
@@ -317,19 +330,21 @@
             $(".main-menu").removeClass('ch-trans-on');
             $(".main-menu").addClass('chsout-anim');
             setTimeout(() => {$(".main-menu").removeClass('chsout-anim');}, 1000);
-            select(); back(); bgmus();
+
+            playSFXMulti(0.2, ['button-select.mp3', 'back.mp3']);
+            bgMusicToggle();
         }
 
         //PAGE PREV/NEXT
         $('.prev').on('click', function() {
-            nextprev();
+            playSFX('nextprev.mp3', userConfig.sfxVol);
             $('.grid').animate({ scrollLeft: '-=' + $('.grid').width() }, 0);
             $(".prev").css("display", "none");
             $(".next").css("display", "flex");
         });
 
         $('.next').on('click', function() {
-            nextprev();
+            playSFX('nextprev.mp3', userConfig.sfxVol);
             $('.grid').animate({ scrollLeft: '+=' + $('.grid').width() }, 0);
             $(".next").css("display", "none");
             $(".prev").css("display", "flex");
@@ -339,7 +354,7 @@
         // HOME/PAUSE MENU
         if (document.addEventListener) {
             document.addEventListener('contextmenu', function(e) {
-                bgmusPause(); homeIn();
+                bgMusicToggle(); playSFX(`home-in.mp3`, 0.2);
                 $(".home-menu").css("display", "grid");
                 e.preventDefault();
             }, false);
@@ -357,12 +372,13 @@
                 $(".home-menu").css("display", "none");
                 $(".home-menu").removeClass("fadeOut");
             }, 250);
-            bgmus(); homeOut();
+            playSFX('home-out.mp3', userConfig.sfxVol);
+            bgMusicToggle();
         });
 
         $(".backtomenu").click(event => {
             $(".returndialog").css("display", "flex");
-            rm1();
+            playSFX('returntomenu-1.mp3', userConfig.sfxVol);
         });
 
         $(".closedialog").click(event => {

@@ -77,10 +77,12 @@ body {
 
 .main-menu {
     background-image: url('../assets/bg-pattern.png');
-    height: 100vh; width: 100vw;
+    height: 100vh;
+    width: 100vw;
     overflow: hidden;
     position: relative;
     z-index: 1;
+    transition: all .5s;
 }
 
 center {
@@ -107,6 +109,11 @@ a, button {
     transition: transform 150ms linear;
 }
 
+.disabled {
+    opacity: 0;
+    display: none;
+}
+
 .disabled-btn {
     filter: grayscale(200%) contrast(50%) brightness(120%);
     pointer-events: none;
@@ -123,12 +130,48 @@ a, button {
     align-items: center;
     text-align: center;
     pointer-events: none;
-    animation: fadeOut 250ms linear 3s forwards;
+    transform: all .5s;
 }
 
 .splash div .collabo {
     height: 15vh;
     margin-bottom: 30px;
+}
+
+.splash .warning {
+    width: 100%;
+    height: 100%;
+}
+
+.splash .warning-container {
+    height: fit-content;
+    position: absolute;
+    margin: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
+.splash .warning .text {
+    width: 55rem;
+    margin: auto;
+    color: white;
+}
+
+.splash .warning .warn-icon {
+    display: contents;
+    color: yellow;
+}
+
+.splash .warning h2 {
+    font-size: 3rem;
+}
+
+.splash .warning span {
+    display: block;
+    padding-top: 6rem;
+    animation: fadeIn ease 1s;
 }
 
 .splash div .tip {
@@ -144,10 +187,6 @@ a, button {
     top: 10vh;
     left: 50%;
     transform: translateX(-50%);
-}
-
-.loading {
-    animation: rotate 1s linear infinite;
 }
 
 .bottom-bar {
@@ -275,13 +314,10 @@ a, button {
 
 .grid {
     position: relative;
-    opacity: 0;
-    animation: fadeIn 250ms linear 3.2s forwards;
     display: flex;
     gap: 15px;
     padding-inline: calc((98vw - 18vw * 4) / 2);
     overflow-x: auto;
-    animation-duration: 1ms;
 }
 
 .grid {scrollbar-width: none;}
@@ -842,7 +878,7 @@ body:has(.main-menu.ch-trans-on) .ch-selection {
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 300;
+    z-index: 500;
 }
 
 .returndialog .msgbox {
@@ -1226,6 +1262,11 @@ https://codepen.io/nelledejones/pen/gOOPWrK */
 @keyframes msgcard-appear {
     from {transform: scale(0);}
     to {transform: scale(1);}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
 .msgboard .memo .title {
