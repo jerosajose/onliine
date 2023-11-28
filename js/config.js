@@ -23,29 +23,41 @@ var def_channels = [
     {
         id: 'disc',
         title: 'Disc Channel',
-        disc: true,
+        assests: 'assets/channels/',
+        channelart: 'channelart/',
+        disc: true
     },
     {
         id: 'mii',
         title: 'Mii Channel',
+        assests: 'assets/channels/',
+        channelart: 'channelart/'
     },
     {
         id: 'photo',
         title: 'Photo Channel',
+        assests: 'assets/channels/',
+        channelart: 'channelart/'
     },
     {
         id: 'shop',
         title: 'Wii Shop Channel',
-        target: '/shop',
+        assests: 'assets/channels/',
+        channelart: 'channelart/',
+        target: '/shop'
     },
     {
         id: 'news',
         title: 'News Channel',
+        assests: 'assets/channels/',
+        channelart: 'channelart/'
     },
     {
         id: 'onliine',
         title: 'Onliine Channel',
-        target: '//github.com/Ascript89/onliine',
+        assests: 'assets/channels/',
+        channelart: 'channelart/',
+        target: '//github.com/Ascript89/onliine'
     }
 ]
 
@@ -55,3 +67,27 @@ if (!localStorage.getItem('onliine-channels')) {
 }
 var userChannels = JSON.parse(localStorage.getItem('onliine-channels'));
 console.log(`user channels: `, userChannels);
+
+// Load default config
+function loadDefaultConfig(confirm) {
+    if (confirm == true) {
+        // Confirmed! writing...
+        localStorage.setItem("onliine-settings", JSON.stringify(def_config));
+        userConfig = JSON.parse(localStorage.getItem('onliine-settings'));
+        console.log(`user config reset!:`, userConfig);
+    } else {
+        console.error(`loadDefaultConfig: MAKE SURE YOU'D LIKE TO DO THIS BY USING "loadDefaultConfig(true)". THERE'S NO TURNING BACK!!`)
+    }
+}
+
+// Load default channels
+function loadDefaultChannels(confirm) {
+    if (confirm == true) {
+        // Confirmed! writing...
+        localStorage.setItem("onliine-channels", JSON.stringify(def_channels));
+        userChannels = JSON.parse(localStorage.getItem('onliine-channels'));
+        console.log(`user channels reset! (reload page to see):`, userChannels);
+    } else {
+        console.error(`loadDefaultChannels: MAKE SURE YOU'D LIKE TO DO THIS BY USING "loadDefaultConfig(true)". THERE'S NO TURNING BACK!!`)
+    }
+}

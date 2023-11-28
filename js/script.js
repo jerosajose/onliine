@@ -30,11 +30,11 @@ function disableSplash() {
 // UI SFX
 function zip() {
     bgMusicToggle();
-    playSFXMulti(userConfig.sfxVol, ['channel-open.wav', 'button-select.wav']);
+    playSFXMulti(userConfig.sfxVol, ['channel-open.mp3', 'button-select.mp3']);
 }
 
 function rm2() {
-    playSFX('returntomenu.wav', userConfig.sfxVol);
+    playSFX('returntomenu.mp3', userConfig.sfxVol);
     setTimeout(() => {document.body.classList.add("fadeOut");}, 1000);
     setTimeout(() => {window.location.href = "/?skipwarn=true";}, 1500);
 }
@@ -49,7 +49,7 @@ function settingsIn() {
 function startup(params) {
     // Remove event listener
     document.querySelector('.splash .warning').removeEventListener('click', startup, true)
-    // If the skip waring is in '?=', show loading instead.
+    // If the skip waring is in '?=' of the page, show loading instead.
     if (params == 'skipwarn') {
         setTimeout(() => {
             document.querySelector('.loading').classList.remove('disabled');
@@ -57,7 +57,7 @@ function startup(params) {
         }, 10);
     // Else, show warning splash.
     } else {
-        playSFX(`button-select.wav`, userConfig.sfxVol)
+        playSFX(`button-select.mp3`, userConfig.sfxVol)
         document.querySelector('.splash').style.opacity = '0';
     }
 
@@ -68,10 +68,10 @@ function startup(params) {
         document.querySelector('.main-menu').classList.remove('disabled');
 
         // Add fade in
-        document.querySelector('.main-menu').style = 'animation: fadeInStatic .5s;';
+        document.querySelector('.main-menu').style = 'animation: fadeIn .5s;';
 
         // Play sound
-        playSFX('startup.wav', userConfig.musicVol);
+        playSFX('startup.mp3', userConfig.musicVol);
         bgMusicToggle();
 
         // Remove animation from main menu

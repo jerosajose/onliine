@@ -49,13 +49,24 @@
     from {opacity: 1;} to {opacity: 0;}
 }
 
-.fadeOut {
-    animation: fadeOut 250ms ease-out forwards;
+@keyframes msgcard-appear {
+    from {transform: scale(0);}
+    to {transform: scale(1);}
+}
+
+@keyframes fadeInandOut {
+    0% {opacity: 0;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
 }
 
 @keyframes rotate {
     from {transform: rotate(0deg);}
     to {transform: rotate(360deg);}
+}
+
+.fadeOut {
+    animation: fadeOut 250ms ease-out forwards;
 }
 
 * {
@@ -160,7 +171,7 @@ a, button {
     width: 60.5vw;
     margin: auto;
     color: white;
-    animation: fadeInStatic 1s;
+    animation: fadeIn 1s;
 }
 
 .splash .warning .warn-icon {
@@ -192,11 +203,12 @@ a, button {
 
 .splash .warning span {
     display: block;
+    opacity: 0;
     font-size: 3vw;
     color: white;
     padding-top: 1vh;
     transition: opacity 1s;
-    animation: fadeInandOut 1s infinite;
+    animation: fadeInandOut 1s infinite 3s;
 }
 
 .splash div .tip {
@@ -212,6 +224,10 @@ a, button {
     top: 10vh;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.loading {
+    animation: rotate 1s linear infinite;
 }
 
 .bottom-bar {
@@ -1283,22 +1299,6 @@ https://codepen.io/nelledejones/pen/gOOPWrK */
     outline: 0.75vh white solid;
     position: absolute;
     animation: msgcard-appear 250ms ease-out forwards;
-}
-
-@keyframes msgcard-appear {
-    from {transform: scale(0);}
-    to {transform: scale(1);}
-}
-
-@keyframes fadeInStatic {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-@keyframes fadeInandOut {
-    0% {opacity: 0;}
-    50% {opacity: 1;}
-    100% {opacity: 0;}
 }
 
 .msgboard .memo .title {

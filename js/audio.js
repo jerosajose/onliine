@@ -2,7 +2,7 @@
 {/* <audio id="startup" src="audio/startup.mp3"></audio>
 <audio id="bg-music" src="audio/bg-music.mp3" loop></audio>
 <audio id="hover" src="audio/button-hover.mp3"></audio>
-<audio id="select" src="audio/button-select.wav"></audio>
+<audio id="select" src="audio/button-select.mp3"></audio>
 <audio id="zip" src="audio/zip.mp3"></audio>
 <audio id="back" src="audio/back.mp3"></audio>
 <audio id="start" src="audio/start.mp3"></audio>
@@ -16,7 +16,6 @@
 
 // User config
 var userConfig = JSON.parse(localStorage.getItem('onliine-settings'));
-console.log(`user config:`, userConfig);
 
 // BG Music
 var bgMusic = new Howl({

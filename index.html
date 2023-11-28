@@ -38,7 +38,7 @@
                     </p>
                     <p class="bottom">
                         Also online at<br>
-                        <a href="">www.nintendo.com/healthsafety</a>
+                        <a>www.nintendo.com/healthsafety</a>
                     </p>
                 </div>
 
@@ -49,11 +49,10 @@
             // If location includes the "skipwarn" thingy, then skip the warning screen
             if (document.location.search.includes('skipwarn')) {
                 startup('skipwarn');
+            // Else, show the regular warning scene
             } else {
-                document.querySelector('.splash .warning span').style.color = 'black';
+                // Wait for the "Press left click" thingy to appear 'cuz that's how the Wii menu works (i think)
                 setTimeout(() => {
-                    document.querySelector('.splash .warning span').style.color = '';
-                    var warningSplash = document.querySelector('.splash .warning');
                     document.querySelector('.splash .warning').addEventListener('click', startup, true);
                 }, 3000);
             }
@@ -108,7 +107,7 @@
         <div class="bottom-bar">
             <div class="lateral left">
                 <img src="assets/left-button.png" class="left-btn" />
-                <img src="assets/wii-button.png" class="wii-btn buttonlike" onclick="playSFX('button-select-big.wav', userConfig.sfxVol)" />
+                <img src="assets/wii-button.png" class="wii-btn buttonlike" onclick="playSFX('button-select-big.mp3', userConfig.sfxVol)" />
                 <span class="tag">Wii Settings</span>
             </div>
             <div class="info">
@@ -118,7 +117,7 @@
             </div>
             <div class="lateral right">
                 <img src="assets/right-button.png" class="right-btn" />
-                <img src="assets/mail-button.png" class="diary-btn buttonlike" onclick="playSFX('button-select-big.wav', userConfig.sfxVol)" />
+                <img src="assets/mail-button.png" class="diary-btn buttonlike" onclick="playSFX('button-select-big.mp3', userConfig.sfxVol)" />
                 <span class="tag">Wii Message Board</span>
             </div>
         </div>
@@ -145,7 +144,7 @@
             <span id="date2"></span>
             <div class="lateral">
                 <img src="assets/right-button.png" class="right-btn" />
-                <img src="assets/backtomenu.png" class="back-btn backtowiimenu buttonlike" onclick="playSFX('button-select-big.wav', userConfig.sfxVol)" />
+                <img src="assets/backtomenu.png" class="back-btn backtowiimenu buttonlike" onclick="playSFX('button-select-big.mp3', userConfig.sfxVol)" />
                 <span class="tag">Wii Menu</span>
             </div>
         </div>
@@ -205,7 +204,7 @@
             </div>
             <div class="actions">
                 <a onclick="rm2();" onmouseover="playSFX('button-hover.mp3', userConfig.sfxVol)">Yes</a>
-                <a class="closedialog" onmouseover="playSFX('button-hover.mp3', userConfig.sfxVol)" onclick="playSFX('button-cancel.wav', userConfig.sfxVol)">No</a>
+                <a class="closedialog" onmouseover="playSFX('button-hover.mp3', userConfig.sfxVol)" onclick="playSFX('button-cancel.mp3', userConfig.sfxVol)">No</a>
             </div>
         </div>
     </div>
@@ -230,15 +229,17 @@
     </div>
 
     <script>
+        // ## This is done in 'channels.js' now
         // CHANNEL ART LOAD
-        $(document).ready(function() {
-            $('.ch.occupied').each(function() {
-                var artsrc = 'channelart/' + $(this).data('id') + '/channel.html';
-                $(this).find('iframe').attr('src', artsrc);
-            });
-        });
+        // $(document).ready(function() {
+        //     $('.ch.occupied').each(function() {
+        //         var artsrc = 'channelart/' + $(this).data('id') + '/channel.html';
+        //         $(this).find('iframe').attr('src', artsrc);
+        //     });
+        // });
 
         // CLICKS ON CHANNEL
+        // Transition
         $(".main-menu").on("click", ".occupied .onhover", function() {
             var centerX = $(this).offset().left + $(this).width() / 2;
             var centerY = $(this).offset().top + $(this).height() / 2;
@@ -246,14 +247,28 @@
             $(".ch-selection").css({"transform-origin" : centerX + "px " + centerY + "px 0" });
             $(".main-menu").addClass('ch-trans-on');
         });
-        
+        // Add music
         $(document).on("click", ".occupied", function() {
-            console.log($(this).data('id'));
+            console.log(`current channel:`, $(this).data('id'));
+            // Get channel from channel confg to find assests folder
+            var assestsDir = null;
+            for (let i = 0; i < userChannels.length; i++) {
+                const element = userChannels[i];
+                
+                if (element.id == $(this).data('id')) {
+                    assestsDir = element.assests;
+                }
+            }
+            // If somehow the directory isn't found
+            if (assestsDir == null) {
+                alert(`The '${$(this).data('id')}' channel couldn't be found in the channel config!`)
+            }
 
-            var audiosrc = 'assets/channels/' + $(this).data('id') + '/audio.mp3';
+            // Audio
+            var audiosrc = assestsDir + $(this).data('id') + '/audio.mp3';
             $("#chSpec").attr('src', audiosrc);
-
-            var videosrc = 'assets/channels/' + $(this).data('id') + '/video.gif';
+            // Video
+            var videosrc = assestsDir + $(this).data('id') + '/video.gif';
             $("#videoSpec").attr('src', videosrc);
 
             $("#chSpec")[0].currentTime = 0;
@@ -271,7 +286,7 @@
 
         // CHANNEL START
         function start() {
-            playSFX('button-select-big.wav', userConfig.sfxVol);
+            playSFX('button-select-big.mp3', userConfig.sfxVol);
             
             if ($(".letsago").attr("data-start")) {
                 setTimeout(() => {document.body.classList.add("fadeOut");}, 1000);
@@ -310,20 +325,20 @@
             $(".main-menu").addClass('chsout-anim');
             setTimeout(() => {$(".main-menu").removeClass('chsout-anim');}, 1000);
 
-            playSFXMulti(0.2, ['button-select.wav', 'channel-back.wav']);
+            playSFXMulti(0.2, ['button-select.mp3', 'channel-back.mp3']);
             bgMusicToggle();
         }
 
         //PAGE PREV/NEXT
         $('.prev').on('click', function() {
-            playSFX('nextprev.wav', userConfig.sfxVol);
+            playSFX('nextprev.mp3', userConfig.sfxVol);
             $('.grid').animate({ scrollLeft: '-=' + $('.grid').width() }, 0);
             $(".prev").css("display", "none");
             $(".next").css("display", "flex");
         });
 
         $('.next').on('click', function() {
-            playSFX('nextprev.wav', userConfig.sfxVol);
+            playSFX('nextprev.mp3', userConfig.sfxVol);
             $('.grid').animate({ scrollLeft: '+=' + $('.grid').width() }, 0);
             $(".next").css("display", "none");
             $(".prev").css("display", "flex");
@@ -335,7 +350,7 @@
             document.addEventListener('contextmenu', function(e) {
                 e.preventDefault();
                 if ($('.home-menu')[0].ariaLabel !== 'on') {
-                    bgMusicToggle(); playSFX(`home-in.wav`, userConfig.sfxVol);
+                    bgMusicToggle(); playSFX(`home-in.mp3`, userConfig.sfxVol);
                     $(".home-menu").css("display", "grid");
                     $('.home-menu')[0].ariaLabel = 'on';
                 }
@@ -354,14 +369,14 @@
                 $(".home-menu").css("display", "none");
                 $(".home-menu").removeClass("fadeOut");
             }, 250);
-            playSFX('button-cancel.wav', userConfig.sfxVol);
+            playSFX('button-cancel.mp3', userConfig.sfxVol);
             bgMusicToggle();
             $('.home-menu')[0].ariaLabel = null;
         });
 
         $(".backtomenu").click(event => {
             $(".returndialog").css("display", "flex");
-            playSFX('button-select-big.wav', userConfig.sfxVol);
+            playSFX('button-select-big.mp3', userConfig.sfxVol);
         });
 
         $(".closedialog").click(event => {
