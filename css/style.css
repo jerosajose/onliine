@@ -160,7 +160,7 @@ a, button {
     width: 60.5vw;
     margin: auto;
     color: white;
-    animation: fadeInWarn 1s;
+    animation: fadeInStatic 1s;
 }
 
 .splash .warning .warn-icon {
@@ -584,6 +584,7 @@ body:has(.main-menu.ch-trans-on) .ch-selection {
     transform: translateY(-50%);
     left: -100%;
     opacity: 0;
+    z-index: -1;
 }
 
 .disc-insert-anim {animation: disc-insert 300ms ease-out 1s forwards;}
@@ -1289,7 +1290,7 @@ https://codepen.io/nelledejones/pen/gOOPWrK */
     to {transform: scale(1);}
 }
 
-@keyframes fadeInWarn {
+@keyframes fadeInStatic {
     from {opacity: 0;}
     to {opacity: 1;}
 }

@@ -1,6 +1,6 @@
 // Default config
 var def_config = {
-    musicVol: 0.2,
+    musicVol: 0.5,
     sfxVol: 0.2,
 }
 

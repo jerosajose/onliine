@@ -15,7 +15,7 @@ window.onload = function () {
             target.setAttribute('data-href', channel.target)
         }
         // If is a disc channel
-        var hasDisc;
+        hasDisc = '';
         if (channel.disc == true) {
             hasDisc = 'id="discTag"';
 

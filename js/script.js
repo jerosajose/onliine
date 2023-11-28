@@ -30,11 +30,11 @@ function disableSplash() {
 // UI SFX
 function zip() {
     bgMusicToggle();
-    playSFXMulti(userConfig.sfxVol, ['zip.mp3', 'button-select.mp3']);
+    playSFXMulti(userConfig.sfxVol, ['channel-open.wav', 'button-select.wav']);
 }
 
 function rm2() {
-    playSFX('returntomenu-2.mp3', userConfig.sfxVol);
+    playSFX('returntomenu.wav', userConfig.sfxVol);
     setTimeout(() => {document.body.classList.add("fadeOut");}, 1000);
     setTimeout(() => {window.location.href = "/?skipwarn=true";}, 1500);
 }
@@ -57,7 +57,7 @@ function startup(params) {
         }, 10);
     // Else, show warning splash.
     } else {
-        playSFX(`button-select.mp3`, userConfig.sfxVol)
+        playSFX(`button-select.wav`, userConfig.sfxVol)
         document.querySelector('.splash').style.opacity = '0';
     }
 
@@ -67,7 +67,16 @@ function startup(params) {
         document.querySelector('.splash').classList.add('disabled');
         document.querySelector('.main-menu').classList.remove('disabled');
 
+        // Add fade in
+        document.querySelector('.main-menu').style = 'animation: fadeInStatic .5s;';
+
         // Play sound
-        playSFX('startup.mp3', userConfig.musicVol, 'bgmusic');
+        playSFX('startup.wav', userConfig.musicVol);
+        bgMusicToggle();
+
+        // Remove animation from main menu
+        setTimeout(() => {
+            document.querySelector('.main-menu').style = '';
+        }, 500);
     }, 3000);
 }

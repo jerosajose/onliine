@@ -108,7 +108,7 @@
         <div class="bottom-bar">
             <div class="lateral left">
                 <img src="assets/left-button.png" class="left-btn" />
-                <img src="assets/wii-button.png" class="wii-btn buttonlike" onclick="playSFX('start.mp3', userConfig.sfxVol)" />
+                <img src="assets/wii-button.png" class="wii-btn buttonlike" onclick="playSFX('button-select-big.wav', userConfig.sfxVol)" />
                 <span class="tag">Wii Settings</span>
             </div>
             <div class="info">
@@ -118,7 +118,7 @@
             </div>
             <div class="lateral right">
                 <img src="assets/right-button.png" class="right-btn" />
-                <img src="assets/mail-button.png" class="diary-btn buttonlike" onclick="playSFX('start.mp3', userConfig.sfxVol)" />
+                <img src="assets/mail-button.png" class="diary-btn buttonlike" onclick="playSFX('button-select-big.wav', userConfig.sfxVol)" />
                 <span class="tag">Wii Message Board</span>
             </div>
         </div>
@@ -139,13 +139,13 @@
                     <span>with multiple lines.</span>
                 </div>
             </div>
-            <a class="alt-btn back">Back</a>
+            <a class="alt-btn back" onmouseover="playSFX('button-hover.mp3', userConfig.sfxVol)">Back</a>
         </div>
         <div class="bottom">
             <span id="date2"></span>
             <div class="lateral">
                 <img src="assets/right-button.png" class="right-btn" />
-                <img src="assets/backtomenu.png" class="back-btn backtowiimenu buttonlike" />
+                <img src="assets/backtomenu.png" class="back-btn backtowiimenu buttonlike" onclick="playSFX('button-select-big.wav', userConfig.sfxVol)" />
                 <span class="tag">Wii Menu</span>
             </div>
         </div>
@@ -156,8 +156,8 @@
             <div class="tl"></div><div class="tr"></div><div class="bl"></div><div class="br"></div>
             <img id="videoSpec" src="" />
             <div class="buttons">
-                <a class="buttonlike" onclick="menuReturn()">Wii Menu</a>
-                <a class="buttonlike letsago" onclick="start()">Start</a>
+                <a class="buttonlike" onmouseover="playSFX('button-hover.mp3', userConfig.sfxVol)" onclick="menuReturn()">Wii Menu</a>
+                <a class="buttonlike letsago" onmouseover="playSFX('button-hover.mp3', userConfig.sfxVol)" onclick="start()">Start</a>
             </div>
         </div>
     </div>
@@ -168,7 +168,7 @@
             <img src="assets/home-close.png" />
         </div>
         <div class="in-between">
-            <a class="buttonlike backtomenu">Wii Menu</a>
+            <a class="buttonlike backtomenu" onmouseover="playSFX('button-hover.mp3', userConfig.sfxVol)">Wii Menu</a>
             <!-- <a class="buttonlike" onclick="window.location.reload()">Reset</a> -->
         </div>
         <div class="bar-bottom">
@@ -204,8 +204,8 @@
                 (Anything not saved will be lost.)
             </div>
             <div class="actions">
-                <a onclick="rm2();">Yes</a>
-                <a class="closedialog">No</a>
+                <a onclick="rm2();" onmouseover="playSFX('button-hover.mp3', userConfig.sfxVol)">Yes</a>
+                <a class="closedialog" onmouseover="playSFX('button-hover.mp3', userConfig.sfxVol)" onclick="playSFX('button-cancel.wav', userConfig.sfxVol)">No</a>
             </div>
         </div>
     </div>
@@ -216,11 +216,11 @@
                 <img src="assets/wii-logo.svg" />
             </div>
             <div class="cells">
-                <a class="info buttonlike" href="/credits" target="_blank"></a>
-                <a class="stngs buttonlike" href="/settings"></a>
+                <a class="info buttonlike" href="/credits" onmouseover="playSFX('button-hover.mp3', userConfig.sfxVol)" target="_blank"></a>
+                <a class="stngs buttonlike" href="/settings" onmouseover="playSFX('button-hover.mp3', userConfig.sfxVol)"></a>
             </div>
             <div class="bottombar">
-                <a class="alt-btn close">Back</a>
+                <a class="alt-btn close" onmouseover="playSFX('button-hover.mp3', userConfig.sfxVol)">Back</a>
             </div>
         </div>
     </div>
@@ -271,7 +271,7 @@
 
         // CHANNEL START
         function start() {
-            playSFX('start.mp3', userConfig.sfxVol);
+            playSFX('button-select-big.wav', userConfig.sfxVol);
             
             if ($(".letsago").attr("data-start")) {
                 setTimeout(() => {document.body.classList.add("fadeOut");}, 1000);
@@ -310,20 +310,20 @@
             $(".main-menu").addClass('chsout-anim');
             setTimeout(() => {$(".main-menu").removeClass('chsout-anim');}, 1000);
 
-            playSFXMulti(0.2, ['button-select.mp3', 'back.mp3']);
+            playSFXMulti(0.2, ['button-select.wav', 'channel-back.wav']);
             bgMusicToggle();
         }
 
         //PAGE PREV/NEXT
         $('.prev').on('click', function() {
-            playSFX('nextprev.mp3', userConfig.sfxVol);
+            playSFX('nextprev.wav', userConfig.sfxVol);
             $('.grid').animate({ scrollLeft: '-=' + $('.grid').width() }, 0);
             $(".prev").css("display", "none");
             $(".next").css("display", "flex");
         });
 
         $('.next').on('click', function() {
-            playSFX('nextprev.mp3', userConfig.sfxVol);
+            playSFX('nextprev.wav', userConfig.sfxVol);
             $('.grid').animate({ scrollLeft: '+=' + $('.grid').width() }, 0);
             $(".next").css("display", "none");
             $(".prev").css("display", "flex");
@@ -333,9 +333,12 @@
         // HOME/PAUSE MENU
         if (document.addEventListener) {
             document.addEventListener('contextmenu', function(e) {
-                bgMusicToggle(); playSFX(`home-in.mp3`, 0.2);
-                $(".home-menu").css("display", "grid");
                 e.preventDefault();
+                if ($('.home-menu')[0].ariaLabel !== 'on') {
+                    bgMusicToggle(); playSFX(`home-in.wav`, userConfig.sfxVol);
+                    $(".home-menu").css("display", "grid");
+                    $('.home-menu')[0].ariaLabel = 'on';
+                }
             }, false);
         }
         else {
@@ -351,13 +354,14 @@
                 $(".home-menu").css("display", "none");
                 $(".home-menu").removeClass("fadeOut");
             }, 250);
-            playSFX('home-out.mp3', userConfig.sfxVol);
+            playSFX('button-cancel.wav', userConfig.sfxVol);
             bgMusicToggle();
+            $('.home-menu')[0].ariaLabel = null;
         });
 
         $(".backtomenu").click(event => {
             $(".returndialog").css("display", "flex");
-            playSFX('returntomenu-1.mp3', userConfig.sfxVol);
+            playSFX('button-select-big.wav', userConfig.sfxVol);
         });
 
         $(".closedialog").click(event => {

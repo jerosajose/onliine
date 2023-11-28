@@ -2,7 +2,7 @@
 {/* <audio id="startup" src="audio/startup.mp3"></audio>
 <audio id="bg-music" src="audio/bg-music.mp3" loop></audio>
 <audio id="hover" src="audio/button-hover.mp3"></audio>
-<audio id="select" src="audio/button-select.mp3"></audio>
+<audio id="select" src="audio/button-select.wav"></audio>
 <audio id="zip" src="audio/zip.mp3"></audio>
 <audio id="back" src="audio/back.mp3"></audio>
 <audio id="start" src="audio/start.mp3"></audio>
@@ -14,17 +14,28 @@
 <audio id="nextprev" src="audio/nextprev.mp3"></audio>
 <audio id="letterIn" src="audio/letter-in.mp3"></audio> */}
 
+// User config
+var userConfig = JSON.parse(localStorage.getItem('onliine-settings'));
+console.log(`user config:`, userConfig);
+
 // BG Music
 var bgMusic = new Howl({
     src: `audio/bg-music.mp3`,
-    volume: 0.2,
+    volume: userConfig.musicVol,
     loop: true
 });
 
 // Toggle BG Music
-function bgMusicToggle() {
+function bgMusicToggle(forceToggle) {
+    // If forceToggle is on
+    if (forceToggle) {
+        if (forceToggle == false) {
+            bgMusic.pause();
+        } else if (forceToggle == true) {
+            bgMusic.play();
+        }
     // If BG Music is playing
-    if (bgMusic.playing() == true) {
+    } else if (bgMusic.playing() == true) {
         bgMusic.pause();
     // Or, if it's paused
     } else if (bgMusic.playing() == false) {
@@ -59,7 +70,7 @@ function playMusic(name, vol, loop) {
 }
 
 // Play one SFX
-function playSFX(name, vol, playafter) {
+function playSFX(name, vol) {
     // Fail if no file name or vol is set.
     if (!name) return alert('You must provide a file name from the "audio/" dir.!');
     if (!vol) return alert('You must provide a volume value!');
@@ -67,12 +78,7 @@ function playSFX(name, vol, playafter) {
     var sfx = new Howl({
         src: `audio/${name}`,
         volume: vol,
-        autoplay: true,
-        onend: function () {
-            if (playafter == 'bgmusic') {
-                bgMusic.play();
-            }
-        }
+        autoplay: true
     });
 }
 
