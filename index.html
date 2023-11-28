@@ -31,14 +31,14 @@
             <div class="warning-container">
                 <div class="text">
                     <h2><div class="warn-icon">&#9888;&nbsp;</div>WARNING-HEALTH AND SAFETY</h3>
-                    <p>
+                    <p class="desc">
                         BEFORE PLAYING, READ YOUR OPERATIONS MANUAL
                         FOR IMPORTANT INFORMATION ABOUT YOUR HEALTH
                         AND SAFETY.
                     </p>
-                    <p>
+                    <p class="bottom">
                         Also online at<br>
-                        www.nintendo.com/healthsafety
+                        <a href="">www.nintendo.com/healthsafety</a>
                     </p>
                 </div>
 
@@ -46,13 +46,16 @@
             </div>
         </div>
         <script>
+            // If location includes the "skipwarn" thingy, then skip the warning screen
             if (document.location.search.includes('skipwarn')) {
                 startup('skipwarn');
             } else {
+                document.querySelector('.splash .warning span').style.color = 'black';
                 setTimeout(() => {
+                    document.querySelector('.splash .warning span').style.color = '';
                     var warningSplash = document.querySelector('.splash .warning');
-                    warningSplash.addEventListener("click", startup(), true)
-                }, 2000);
+                    document.querySelector('.splash .warning').addEventListener('click', startup, true);
+                }, 3000);
             }
         </script>
 

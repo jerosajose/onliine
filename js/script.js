@@ -47,6 +47,8 @@ function settingsIn() {
 
 // Startup for loading & warning
 function startup(params) {
+    // Remove event listener
+    document.querySelector('.splash .warning').removeEventListener('click', startup, true)
     // If the skip waring is in '?=', show loading instead.
     if (params == 'skipwarn') {
         setTimeout(() => {

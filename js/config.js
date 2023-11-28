@@ -35,7 +35,7 @@ var def_channels = [
     },
     {
         id: 'shop',
-        title: 'Onliine Shop Channel',
+        title: 'Wii Shop Channel',
         target: '/shop',
     },
     {

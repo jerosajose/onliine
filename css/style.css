@@ -66,7 +66,8 @@
 }
 
 body {
-    padding: 0; margin: 0;
+    padding: 0;
+    margin: 0;
     overflow: hidden;
     background-color: black;
     color: #84868a;
@@ -110,8 +111,8 @@ a, button {
 }
 
 .disabled {
-    opacity: 0;
-    display: none;
+    opacity: 0 !important;
+    display: none !important;
 }
 
 .disabled-btn {
@@ -122,15 +123,16 @@ a, button {
 
 .splash {
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: black;
     z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    pointer-events: none;
-    transform: all .5s;
 }
 
 .splash div .collabo {
@@ -141,6 +143,7 @@ a, button {
 .splash .warning {
     width: 100%;
     height: 100%;
+    transition: unset;
 }
 
 .splash .warning-container {
@@ -154,24 +157,46 @@ a, button {
 }
 
 .splash .warning .text {
-    width: 55rem;
+    width: 60.5vw;
     margin: auto;
     color: white;
+    animation: fadeInWarn 1s;
 }
 
 .splash .warning .warn-icon {
+    font-size: 4.2vw;
     display: contents;
+    position: relative;
     color: yellow;
+    height: 2vw;
 }
 
 .splash .warning h2 {
-    font-size: 3rem;
+    font-size: 3.35vw;
+    margin: unset;
+}
+
+.splash .warning .desc {
+    font-size: 2.5vw;
+}
+
+.splash .warning .bottom {
+    font-size: 2vw;
+}
+
+.splash .warning .bottom a {
+    font-size: 2.5vw;
+    color: #7b92c3;
+    /* pointer-events: none; */
 }
 
 .splash .warning span {
     display: block;
-    padding-top: 6rem;
-    animation: fadeIn ease 1s;
+    font-size: 3vw;
+    color: white;
+    padding-top: 1vh;
+    transition: opacity 1s;
+    animation: fadeInandOut 1s infinite;
 }
 
 .splash div .tip {
@@ -1264,9 +1289,15 @@ https://codepen.io/nelledejones/pen/gOOPWrK */
     to {transform: scale(1);}
 }
 
-@keyframes fadeIn {
+@keyframes fadeInWarn {
     from {opacity: 0;}
     to {opacity: 1;}
+}
+
+@keyframes fadeInandOut {
+    0% {opacity: 0;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
 }
 
 .msgboard .memo .title {
