@@ -23,39 +23,39 @@ var def_channels = [
     {
         id: 'disc',
         title: 'Disc Channel',
-        assests: 'assets/channels/',
+        assets: 'assets/channels/',
         channelart: 'channelart/',
         disc: true
     },
     {
         id: 'mii',
         title: 'Mii Channel',
-        assests: 'assets/channels/',
+        assets: 'assets/channels/',
         channelart: 'channelart/'
     },
     {
         id: 'photo',
         title: 'Photo Channel',
-        assests: 'assets/channels/',
+        assets: 'assets/channels/',
         channelart: 'channelart/'
     },
     {
         id: 'shop',
         title: 'Wii Shop Channel',
-        assests: 'assets/channels/',
+        assets: 'assets/channels/',
         channelart: 'channelart/',
         target: '/shop'
     },
     {
         id: 'news',
         title: 'News Channel',
-        assests: 'assets/channels/',
+        assets: 'assets/channels/',
         channelart: 'channelart/'
     },
     {
         id: 'onliine',
         title: 'Onliine Channel',
-        assests: 'assets/channels/',
+        assets: 'assets/channels/',
         channelart: 'channelart/',
         target: '//github.com/Ascript89/onliine'
     }
@@ -69,7 +69,7 @@ var userChannels = JSON.parse(localStorage.getItem('onliine-channels'));
 console.log(`user channels: `, userChannels);
 
 // Load default config
-function loadDefaultConfig(confirm) {
+function resetConfig(confirm) {
     if (confirm == true) {
         // Confirmed! writing...
         localStorage.setItem("onliine-settings", JSON.stringify(def_config));
@@ -81,7 +81,7 @@ function loadDefaultConfig(confirm) {
 }
 
 // Load default channels
-function loadDefaultChannels(confirm) {
+function resetChannels(confirm) {
     if (confirm == true) {
         // Confirmed! writing...
         localStorage.setItem("onliine-channels", JSON.stringify(def_channels));

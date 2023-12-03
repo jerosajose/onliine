@@ -250,25 +250,25 @@
         // Add music
         $(document).on("click", ".occupied", function() {
             console.log(`current channel:`, $(this).data('id'));
-            // Get channel from channel confg to find assests folder
-            var assestsDir = null;
+            // Get channel from channel confg to find assets folder
+            var assetsDir = null;
             for (let i = 0; i < userChannels.length; i++) {
                 const element = userChannels[i];
                 
                 if (element.id == $(this).data('id')) {
-                    assestsDir = element.assests;
+                    assetsDir = element.assets;
                 }
             }
             // If somehow the directory isn't found
-            if (assestsDir == null) {
+            if (assetsDir == null) {
                 alert(`The '${$(this).data('id')}' channel couldn't be found in the channel config!`)
             }
 
             // Audio
-            var audiosrc = assestsDir + $(this).data('id') + '/audio.mp3';
+            var audiosrc = assetsDir + $(this).data('id') + '/audio.mp3';
             $("#chSpec").attr('src', audiosrc);
             // Video
-            var videosrc = assestsDir + $(this).data('id') + '/video.gif';
+            var videosrc = assetsDir + $(this).data('id') + '/video.gif';
             $("#videoSpec").attr('src', videosrc);
 
             $("#chSpec")[0].currentTime = 0;

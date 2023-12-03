@@ -43,22 +43,31 @@ window.onload = function () {
 
 // Add channel
 // Adds to channel config too.
-// Defaults: addChannel('id', 'Title', 'path-to-assests', 'path-to-channelart')
+// Defaults: addChannel('id', 'Title', 'path-to-assets', 'path-to-channelart')
 // (Everything else is optional)
-function addChannel(id, title, assests, channelart, target) {
+function addChannel(id, title, assets, channelart, target) {
     // Check stuff that's required
+    function def_cmd() {
+        console.log(`Defaults: addChannel('id', 'Title', 'path-to-assets[/]', 'path-to-channelart[/]')`);
+    }
     if (!id) {
         console.error(`addChannel: You must supply a id!`)
-        console.log(`Defaults: addChannel('id', 'Title', 'path-to-assests', 'path-to-channelart')`);
+        def_cmd();
     } else if (!title) {
         console.error(`addChannel: You must supply a title!`)
-        console.log(`Defaults: addChannel('id', 'Title', 'path-to-assests', 'path-to-channelart')`);
-    } else if (!assests) {
-        console.error(`addChannel: You must supply the assests directory! (Don't include the id with this var)`)
-        console.log(`Defaults: addChannel('id', 'Title', 'path-to-assests', 'path-to-channelart')`);
+        def_cmd();
+    } else if (!assets) {
+        console.error(`addChannel: You must supply the assets directory! (Don't include the id with this var)`)
+        def_cmd();
+    } else if (!assets.endsWith('/')) {
+        console.error(`addChannel: Your assets folder doesn't end with a "/"! Please fix that!`)
+        def_cmd();
     } else if (!channelart) {
         console.error(`addChannel: You must supply the channelart directory! (Don't include the id with this var)`)
-        console.log(`Defaults: addChannel('id', 'Title', 'path-to-assests', 'path-to-channelart')`);
+        def_cmd();
+    } else if (!channelart.endsWith('/')) {
+        console.error(`addChannel: Your channelart folder doesn't end with a "/"! Please fix that!`)
+        def_cmd();
 
     // Pass!!!!!!
     } else {
@@ -66,7 +75,7 @@ function addChannel(id, title, assests, channelart, target) {
         var channel = {
             id: id,
             title: title,
-            assests: assests,
+            assets: assets,
             channelart: channelart
         }
         // If there's a target, add it.
@@ -76,8 +85,9 @@ function addChannel(id, title, assests, channelart, target) {
         
         // Push to userChannels & storage.
         userChannels.push(channel);
-        // localStorage.setItem("onliine-channels", userChannels);
-        return console.log(`new channel storage: `, userChannels);
+        localStorage.setItem("onliine-channels", JSON.stringify(userChannels));
+        console.log(`new channel storage: `, userChannels);
+        return 'Please reload this page to see your new channel!';
     }
 }
 // Remove channel
