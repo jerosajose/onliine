@@ -45,10 +45,10 @@ window.onload = function () {
 // Adds to channel config too.
 // Defaults: addChannel('id', 'Title', 'path-to-assets', 'path-to-channelart')
 // (Everything else is optional)
-function addChannel(id, title, assets, channelart, target) {
+function addChannel(id, title, assets, channelart, target, videoformat) {
     // Check stuff that's required
     function def_cmd() {
-        console.log(`Defaults: addChannel('id', 'Title', 'path-to-assets[/]', 'path-to-channelart[/]')`);
+        console.log(`Defaults: addChannel('id', 'Title', 'path-to-assets[/]', 'path-to-channelart[/]', [optional: 'target-to-html', 'video-format (recommend webp!)'] )`);
     }
     if (!id) {
         console.error(`addChannel: You must supply a id!`)
@@ -81,6 +81,9 @@ function addChannel(id, title, assets, channelart, target) {
         // If there's a target, add it.
         if (target) {
             channel.target = target;
+        }
+        if (videoformat) {
+            channel.videoformat = videoformat;
         }
         
         // Push to userChannels & storage.

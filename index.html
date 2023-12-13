@@ -251,30 +251,37 @@
         $(document).on("click", ".occupied", function() {
             console.log(`current channel:`, $(this).data('id'));
             // Get channel from channel confg to find assets folder
-            var assetsDir = null;
+            var targetChannel = null;
             for (let i = 0; i < userChannels.length; i++) {
                 const element = userChannels[i];
                 
                 if (element.id == $(this).data('id')) {
-                    assetsDir = element.assets;
+                    targetChannel = element;
                 }
             }
             // If somehow the directory isn't found
-            if (assetsDir == null) {
+            if (targetChannel == null) {
                 alert(`The '${$(this).data('id')}' channel couldn't be found in the channel config!`)
             }
 
             // Audio
-            var audiosrc = assetsDir + $(this).data('id') + '/audio.mp3';
+            var audiosrc = targetChannel.assets + $(this).data('id') + '/audio.mp3';
             $("#chSpec").attr('src', audiosrc);
             // Video
-            var videosrc = assetsDir + $(this).data('id') + '/video.gif';
+            // If this channel has a "videoformat"
+            var vformat = 'gif';
+            if (targetChannel.videoformat) {
+                vformat = targetChannel.videoformat
+            }
+            var videosrc = targetChannel.assets + $(this).data('id') + `/video.${vformat}`;
             $("#videoSpec").attr('src', videosrc);
 
+            // Start channel music
             $("#chSpec")[0].currentTime = 0;
             var currentaudio = document.getElementById("chSpec");
             currentaudio.play();
 
+            // Move into channel
             $(".letsago").attr('data-start', $(this).data('href'));
             if ($(this).attr("data-href")) {
                 $(".letsago").attr('data-start', $(this).data('href'));
