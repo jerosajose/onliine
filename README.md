@@ -12,7 +12,7 @@ might contain errors, has poorly written code and hence I will not focus on perf
 The project is on a hiatus until I deploy the next update due to me needing to concentrate on my
 ongoing school course. New stuff coming this summer.
 
-Visit [this website](https://jerosgamer.me/res/sysver.txt) to check the latest version available.
+Visit [this website](https://ascript89.github.io/res/sysver.txt) to check the latest version available.
 
 ## Updater
 While you tinker with the source code, make sure to visit regularly the Settings page, which is
