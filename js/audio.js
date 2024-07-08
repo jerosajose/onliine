@@ -19,7 +19,7 @@ var userConfig = JSON.parse(localStorage.getItem('onliine-settings'));
 
 // BG Music
 var bgMusic = new Howl({
-    src: `audio/bg-music.mp3`,
+    src: `${window.location.origin}/audio/bg-music.mp3`,
     volume: userConfig.musicVol,
     loop: true
 });
@@ -75,7 +75,7 @@ function playSFX(name, vol) {
     if (!vol) return alert('You must provide a volume value!');
     // Actual Howl
     var sfx = new Howl({
-        src: `audio/${name}`,
+        src: `${window.location.origin}/audio/${name}`, // Works in any dir now
         volume: vol,
         autoplay: true
     });

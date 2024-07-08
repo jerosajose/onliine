@@ -17,6 +17,11 @@
     <title>Settings</title>
     <link rel="stylesheet" href="../css/style.css" />
     <script src="../js/jquery.js"></script>
+    <script src="../js/howler.min.js"></script>
+    <script src="../js/audio.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/settings.js"></script>
+    <!-- <script src="../js/channels.js"></script> -->
     <script>
         if (document.addEventListener) {
             document.addEventListener('contextmenu', function(e) {
@@ -62,11 +67,12 @@
             font-size: 4vh;
             line-height: 7vh;
             position: absolute;
-            top: 40vh;
             left: 50vw;
             transform: translateX(-50%);
         }
     </style>
+
+    <script>var currentMenuPage = "1";</script>
 </head>
 <body>
     <img src="../assets/nohome4u.png" id="homeNotAv" />
@@ -76,34 +82,87 @@
                 <div class="header">Wii System Settings <gray>(WIP)</gray></div>
                 <div class="version">Ver 4.3E</div>
             </div>
-            <div class="ver">
-                Website version&nbsp;<span id="versionprint">a</span><br>
-                Onliine latest available: <span id="updatedver"></span><br>
-                Based upon Wii System 4.3E
+            
+            <div id="page-buttons">
+                <div class="prev">
+                    <img src="../assets/prev-default.png" class="def" />
+                    <img src="../assets/prev-hover.png" class="hover" />
+                </div>
+                <div class="next">
+                    <img src="../assets/next-hover.png" class="hover" />
+                    <img src="../assets/next-default.png" class="def" />
+                </div>
+
+                <script>
+                    //PAGE PREV/NEXT
+                    $('.prev').on('click', function() {
+                        playSFX('nextprev.mp3', userConfig.sfxVol);
+                        $('#setting-pages').animate({ scrollLeft: '-=' + $('#setting-pages').width() }, 0);
+                        currentMenuPage--;
+                        $(".next").css("display", "flex");
+                        // If current page is at the end
+                        if (currentMenuPage == 1) {
+                            $(".prev").css("display", "none");
+                        }
+                    });
+
+                    $('.next').on('click', function() {
+                        playSFX('nextprev.mp3', userConfig.sfxVol);
+                        $('#setting-pages').animate({ scrollLeft: '+=' + $('#setting-pages').width() }, 0);
+                        currentMenuPage++;
+                        $(".prev").css("display", "flex");
+                        // If current page is at the end
+                        if (currentMenuPage == document.querySelectorAll('#setting-page').length) {
+                            $(".next").css("display", "none");
+                        }
+                    });
+                </script>
+            </div>
+
+            <div id="setting-popup"></div>
+            <div id="setting-pages">
+                <div id="setting-page">
+                    <div class="content">
+                        if you see this, you have an error
+                    </div>
+                </div>
+                <div id="setting-page" class="ver">
+                    <div class="content">
+                        Website version&nbsp;<span id="versionprint">a</span><br>
+                        Onliine latest available: <span id="updatedver"></span><br>
+                        Based upon Wii System 4.3E
+                    </div>
+                </div>
             </div>
             <div class="bottombar">
-                <a class="alt-btn" href="/?skipwarn=true">Back</a>
-                <a class="alt-btn" href="#" target="_blank">GitHub</a>
+                <a class="alt-btn" href="/?skipwarn=true">Quit</a>
+                <a class="alt-btn" href="https://github.com/ktg5/onliine/" target="_blank">GitHub</a>
             </div>
         </div>
     </div>
-    <script>
-        const url = "//jerosgamer.me/res/sysver.txt";
-        const localver = "1.1";
-        document.getElementById("versionprint").textContent = localver;
 
-        $.get(url, function(fileContent) {
-            document.getElementById("updatedver").textContent = fileContent.trim();
-            if (fileContent.trim() === localver.trim()) {
-                console.log("Update checked: system is up to date");
-            }
-            else if (fileContent.trim() <= localver.trim()) {
-                alert("bro do be living in the future, you're running on a version that hasn't been released yet lol");
-            }
-            else {
-                alert("There's an update available for Wii System.\nPlease contact the administrator to perform the update.\n\nLatest available: " + fileContent.trim() + "\nYou're running on: " + localver);
-            }
-        });
+    <script>
+        // uhhh the DNS is gone for this site
+        // // Update check
+        // const url = "//jerosgamer.me/res/sysver.txt";
+        // const localver = "1.1";
+        // document.getElementById("versionprint").textContent = localver;
+
+        // $.get(url, function(fileContent) {
+        //     document.getElementById("updatedver").textContent = fileContent.trim();
+        //     if (fileContent.trim() === localver.trim()) {
+        //         console.log("Update checked: system is up to date");
+        //     }
+        //     else if (fileContent.trim() <= localver.trim()) {
+        //         console.info("bro do be living in the future, you're running on a version that hasn't been released yet lol");
+        //     }
+        //     else {
+        //         alert("There's an update available for Wii System.\nPlease contact the administrator to perform the update.\n\nLatest available: " + fileContent.trim() + "\nYou're running on: " + localver);
+        //     }
+        // });
+        
+        // Init page
+        setSettingsTo('index');
     </script>
 </body>
 </html>

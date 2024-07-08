@@ -9,6 +9,8 @@ if (typeof(Storage) !== "undefined") {
     if (!localStorage.getItem('onliine-settings')) {
         // Stringify the config cuz that's how it is.
         localStorage.setItem("onliine-settings", JSON.stringify(def_config));
+        // Reload the page so that everything works.
+        location.reload();
     }
 } else {
     alert('Local Storage is not support or disabled -- settings will not work!')
@@ -88,6 +90,6 @@ function resetChannels(confirm) {
         userChannels = JSON.parse(localStorage.getItem('onliine-channels'));
         console.log(`user channels reset! (reload page to see):`, userChannels);
     } else {
-        console.error(`loadDefaultChannels: MAKE SURE YOU'D LIKE TO DO THIS BY USING "loadDefaultConfig(true)". THERE'S NO TURNING BACK!!`)
+        console.error(`loadDefaultChannels: MAKE SURE YOU'D LIKE TO DO THIS BY USING ADDING "true" IN THE FUNCTION. THERE'S NO TURNING BACK!!`)
     }
 }

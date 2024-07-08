@@ -24,6 +24,8 @@
 	<meta name="keywords" content="riimake,onliine,wii,homebrew,wii simulator,wii menu,wii web" />
     <meta name="theme-color" content="#222222" />
     <meta name="apple-mobile-web-app-status-bar" content="#222222" />
+
+    <script>var currentMenuPage = 1;</script>
 </head>
 <body>
     <div class="splash">
@@ -340,16 +342,23 @@
         $('.prev').on('click', function() {
             playSFX('nextprev.mp3', userConfig.sfxVol);
             $('.grid').animate({ scrollLeft: '-=' + $('.grid').width() }, 0);
-            $(".prev").css("display", "none");
+            currentMenuPage--;
             $(".next").css("display", "flex");
+            // If current page is at the end
+            if (currentMenuPage == 1) {
+                $(".prev").css("display", "none");
+            }
         });
 
         $('.next').on('click', function() {
             playSFX('nextprev.mp3', userConfig.sfxVol);
             $('.grid').animate({ scrollLeft: '+=' + $('.grid').width() }, 0);
-            $(".next").css("display", "none");
+            currentMenuPage++;
             $(".prev").css("display", "flex");
-            
+            // If current page is at the end
+            if (currentMenuPage == document.querySelectorAll('.ch-c').length) {
+                $(".next").css("display", "none");
+            }
         });
 
         // HOME/PAUSE MENU

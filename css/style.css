@@ -1031,12 +1031,14 @@ too sick to be seen
 }
   
 .settings-content {
-    width: 100%; height: 100%;
+    width: 100%;
+    height: 100%;
     display: none;
     background-image: url('../assets/settings-main-bg.png');
     background-size: 1.3vh;
 }
 
+/* Regular Wii Button */
 a.alt-btn  {
     background-image: url('../assets/alt-btn-texture.png');
     background-size: contain;
@@ -1079,6 +1081,51 @@ a.alt-btn::after {
 a.alt-btn:hover {
     transform: scale(1.1);
 }
+
+/* Wii Settings Button */
+button.set-btn  {
+    background-image: url('../assets/set-btn-texture.png');
+    background-size: contain;
+    background-repeat: repeat-x;
+    padding-top: 0.8vh;
+    padding-inline: 1vh;
+    margin: 0 2vw;
+    height: 10vh;
+    color: #444;
+    font-size: 4.5vh;
+    text-align: center;
+    cursor: inherit;
+    position: relative;
+    transition: 150ms;
+}
+
+button.set-btn::before {
+    content: '';
+    background-image: url('../assets/set-btn-left.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 5vw;
+    position: absolute;
+    top: 0;
+    left: -2vw;
+}
+
+button.set-btn::after {
+    content: '';
+    background-image: url('../assets/set-btn-right.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 5vw;
+    position: absolute;
+    top: 0;
+    right: -4.9vw;
+}
+
+button.set-btn:hover {
+}
+
 
 .settings-content .topbar {
     background-image: url('../assets/settings-topbar.png');
@@ -1144,6 +1191,48 @@ a.alt-btn:hover {
 .settings-content .cells .stngs {
     background-image: url('../assets/wii-settings.png');
 }
+
+#page-buttons div {
+    top: 44%;
+}
+
+#setting-pages {
+    scrollbar-width: none;
+    display: flex;
+    overflow-x: auto;
+}
+
+#setting-page {
+    position: relative;
+    min-width: 100vw;
+    height: 100vh;
+}
+
+#setting-page .content {
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    margin: auto;
+    bottom: 5vh;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
+#setting-page button {
+    display: block;
+    width: 50vw;
+    margin: 2.5vh auto;
+}
+
+#setting-page button:where(:first-child) {
+    margin-top: 0;
+}
+
+#setting-page button:where(:last-child) {
+    margin-bottom: 0;
+}
+
 
 .msgboard {
     background-image: linear-gradient(to bottom, #cecfd7, #f0f0f0, #cecfd7);
