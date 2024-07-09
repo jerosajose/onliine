@@ -3,42 +3,10 @@ window.onload = function () {
     // For each user channel
     // (userChannels is defined in 'config.js')
     for (const channel of userChannels) {
-        // Get the first blank channel
-        var target = document.getElementsByClassName('ch blank')[0];
-
-        // First, we remove the "blank" class name & add "occupied".
-        target.classList.remove('blank');
-        target.classList.add('occupied');
-
-        // Now, we inject stuff from the channel config in the target.
-        target.setAttribute('data-id' , channel.id);
-        // Add target href if channel has a target
-        if (channel.target) {
-            target.setAttribute('data-href', channel.target)
-        }
-        // If is a disc channel
-        hasDisc = '';
-        if (channel.disc == true) {
-            hasDisc = 'id="discTag"';
-
-            target.insertAdjacentHTML(`afterbegin`,
-            
-            `
-            <img src="channelart/disc/disc.png" class="spinnin" />
-            `
-            )
-        }
-        // Main inject
-        // If channel has the 'custom' var:
-        target.insertAdjacentHTML('afterbegin', 
-        
-        `
-        <iframe src="${channel.channelart}${channel.id}/channel.html"></iframe>
-        <div class="onhover" onmouseover="playSFX('button-hover.mp3', 0.2)" onclick="zip()"></div>
-        <span class="tag" ${hasDisc}>${channel.title}</span>
-        `
-        )
+        // Send info to makeChannel
+        makeChannel(channel);
     }
+    mainchannelsset = true;
 }
 
 // Add channel
@@ -93,6 +61,45 @@ function addChannel(id, title, assets, channelart, target, videoformat) {
         return 'Please reload this page to see your new channel!';
     }
 }
+
+function makeChannel(channeljson) {
+    // Get the first blank channel
+    var target = document.getElementsByClassName('ch blank')[0];
+
+    // First, we remove the "blank" class name & add "occupied".
+    target.classList.remove('blank');
+    target.classList.add('occupied');
+
+    // Now, we inject stuff from the channel config in the target.
+    target.setAttribute('data-id' , channeljson.id);
+    // Add target href if channel has a target
+    if (channeljson.target) {
+        target.setAttribute('data-href', channeljson.target)
+    }
+    // If is a disc channel
+    hasDisc = '';
+    if (channeljson.disc == true) {
+        hasDisc = 'id="discTag"';
+
+        target.insertAdjacentHTML(`afterbegin`,
+        
+        `
+        <img src="channelart/disc/disc.png" class="spinnin" />
+        `
+        )
+    }
+    // Main inject
+    // If channel has the 'custom' var:
+    target.insertAdjacentHTML('afterbegin', 
+    
+    `
+    <iframe src="${channeljson.channelart}${channeljson.id}/channel.html"></iframe>
+    <div class="onhover" onmouseover="playSFX('button-hover.mp3', 0.2)" onclick="zip()"></div>
+    <span class="tag" ${hasDisc}>${channeljson.title}</span>
+    `
+    )
+}
+
 // Remove channel
 // Removes from channel config too.
 function removeChannel(id) {
