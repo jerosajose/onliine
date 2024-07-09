@@ -12,13 +12,11 @@
   "license": "GNU AGPLv3",
   "dependencies": {
     "electron-forge": "^5.2.4",
-    "electron-squirrel-startup": "^1.0.1"
+    "electron-squirrel-startup": "^1.0.1",
+    "express": "^4.19.2"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.4.0",
-    "@electron-forge/maker-deb": "^7.4.0",
-    "@electron-forge/maker-rpm": "^7.4.0",
-    "@electron-forge/maker-squirrel": "^7.4.0",
     "@electron-forge/maker-zip": "^7.4.0",
     "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
     "@electron-forge/plugin-fuses": "^7.4.0",

@@ -1,0 +1,47 @@
+# This is the thingy for GitHub to make it do some stuff.
+# Aka, "build" and Zip up the versions we want to ship.
+name: Onliine build-n-pack
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Setup Node.js environment.
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.2
+
+      # Install the NPM modules that are included with this repo.
+      - name: Install NPM packages
+        run: npm install
+
+      # Run the build node script.
+      - name: Run the build node script
+        run: npm run make
+
+      # Upload the ZIP files to the "Artifacts" tab on this action's page.
+      ## Firefox
+      - name: Upload the Win32 x64 ZIP build to the "Artifacts" tab
+        uses: actions/upload-artifact@v4.3.4
+        with:
+          name: PlayerTube Firefox Build
+          path: ${{ github.workspace }}/out/onliine-win32-x64

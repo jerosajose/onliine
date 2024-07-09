@@ -25,7 +25,11 @@
     <meta name="theme-color" content="#222222" />
     <meta name="apple-mobile-web-app-status-bar" content="#222222" />
 
-    <script>var currentMenuPage = 1;</script>
+    <script>
+        var currentMenuPage = 1;
+        var info,
+            mainchannelsset;
+    </script>
 </head>
 <body>
     <div class="splash">
@@ -60,7 +64,7 @@
             }
         </script>
 
-        <div class="loading disabled">
+        <div class="welcomeback disabled">
             <img src="assets/return.gif" class="channels" />
             <span class="tip"><strong>PRO TIP:</strong>&nbsp;Right-click to open the Wii pause menu</span>
         </div>
@@ -105,6 +109,27 @@
                 <img src="assets/next-default.png" class="def" />
             </div>
         </div>
+
+        <!-- show special electron download channel -->
+        <script>
+            if (!info) {
+                let tempinterval = setInterval(() => {
+                    if (mainchannelsset) {
+                        makeChannel({
+                            assets: "assets/channels/",
+                            channelart: "channelart/",
+                            id: "electron",
+                            title: "Download the Desktop App"
+                        });
+
+                        document.querySelector('[data-id="electron"]').setAttribute('data-special', true)
+                        clearInterval(tempinterval);
+                    } else {
+                        return;
+                    }
+                }, 100);
+            }
+        </script>
     
         <div class="bottom-bar">
             <div class="lateral left">
@@ -263,7 +288,27 @@
             }
             // If somehow the directory isn't found
             if (targetChannel == null) {
-                alert(`The '${$(this).data('id')}' channel couldn't be found in the channel config!`)
+                // This part is mainly for the "electron" channel that isn't in the channel config.
+                if ($(this).data('special')) {
+                    // Check what special channel this is
+                    switch ($(this).data('id')) {
+                        // These (as of currently) only need assets [and videoformat if not gif].
+                        case "electron":
+                            targetChannel = {
+                                assets: "assets/channels/",
+                                videoformat: "webp"
+                            }
+                        break;
+                    
+                        default:
+                            alert(`The '${$(this).data('id')}' channel couldn't be found in the channel config!`);
+                        break;
+                    }
+                    console.log($(this).data('special'));
+                // This is what should really happen.
+                } else {
+                    alert(`The '${$(this).data('id')}' channel couldn't be found in the channel config!`);
+                }
             }
 
             // Audio

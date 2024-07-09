@@ -52,7 +52,7 @@ function startup(params) {
     // If the skip waring is in '?=' of the page, show loading instead.
     if (params == 'skipwarn') {
         setTimeout(() => {
-            document.querySelector('.loading').classList.remove('disabled');
+            document.querySelector('.welcomeback').classList.remove('disabled');
             document.querySelector('.warning').classList.add('disabled');
         }, 10);
     // Else, show warning splash.
