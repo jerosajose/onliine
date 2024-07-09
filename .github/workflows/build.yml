@@ -43,5 +43,5 @@ jobs:
       - name: Upload the Win32 x64 ZIP build to the "Artifacts" tab
         uses: actions/upload-artifact@v4.3.4
         with:
-          name: PlayerTube Firefox Build
+          name: Onliine Win32 x64
           path: ${{ github.workspace }}/out/onliine-linux-x64
