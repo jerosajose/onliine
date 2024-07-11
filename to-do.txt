@@ -18,4 +18,4 @@ to-do:
 
 future considerations:
 - dolphin vm in wasm
-- desktop app with electron 🤝 working shop channel
+- desktop app with electron 🤝 working shop channel (ktg5/onliine-electron)
