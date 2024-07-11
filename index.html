@@ -26,6 +26,8 @@
     <meta name="apple-mobile-web-app-status-bar" content="#222222" />
 
     <script>
+        startDateTime();
+        
         var currentMenuPage = 1;
         var info,
             mainchannelsset;
@@ -120,7 +122,8 @@
                             assets: "assets/channels/",
                             channelart: "channelart/",
                             id: "electron",
-                            title: "Download the Desktop App"
+                            title: "Onliine Desktop",
+                            target: "https://github.com/ktg5/onliine-electron/releases/latest"
                         });
 
                         document.querySelector('[data-id="electron"]').setAttribute('data-special', true)

@@ -20,7 +20,9 @@ function showDateTime() {
     dateDiv.innerText = `${today}`;
     dateDiary.innerText = `${today}`;
 }
-setInterval(showDateTime, 1000);
+function startDateTime() {
+    setInterval(showDateTime, 1000);
+}
 
 // Disable splash
 function disableSplash() {

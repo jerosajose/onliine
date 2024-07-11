@@ -18,24 +18,33 @@ function addChannel(id, title, assets, channelart, target, videoformat) {
     function def_cmd() {
         console.log(`Defaults: addChannel('id', 'Title', 'path-to-assets[/]', 'path-to-channelart[/]', [optional: 'target-to-html', 'video-format (recommend webp!)'] )`);
     }
+    function logErr(msg, defcmd) {
+        if (defcmd == true) def_cmd();
+        console.error(`addChannel: ${msg}`);
+        return { err: true, msg: msg };
+    }
     if (!id) {
-        console.error(`addChannel: You must supply a id!`)
-        def_cmd();
+        let msg = `You must supply a id!`;
+        return logErr(msg, true);
+    // Also check for each channel that the users has, make sure the "id" isn't taken.
+    } else if (userChannels.find((element) => element.id === id)) {
+        let msg = `You already have a channel with that id!`;
+        return logErr(msg);
     } else if (!title) {
-        console.error(`addChannel: You must supply a title!`)
-        def_cmd();
+        let msg = `You must supply a title!`;
+        return logErr(msg, true);
     } else if (!assets) {
-        console.error(`addChannel: You must supply the assets directory! (Don't include the id with this var)`)
-        def_cmd();
+        let msg = `You must supply the assets directory! (Don't include the id with this var)`;
+        return logErr(msg, true);
     } else if (!assets.endsWith('/')) {
-        console.error(`addChannel: Your assets folder doesn't end with a "/"! Please fix that!`)
-        def_cmd();
+        let msg = `Your assets folder doesn't end with a "/"! Please fix that!`;
+        return logErr(msg, true);
     } else if (!channelart) {
-        console.error(`addChannel: You must supply the channelart directory! (Don't include the id with this var)`)
-        def_cmd();
+        let msg = `You must supply the channelart directory! (Don't include the id with this var)`;
+        return logErr(msg, true);
     } else if (!channelart.endsWith('/')) {
-        console.error(`addChannel: Your channelart folder doesn't end with a "/"! Please fix that!`)
-        def_cmd();
+        let msg = `Your channelart folder doesn't end with a "/"! Please fix that!`;
+        return logErr(msg, true);
 
     // Pass!!!!!!
     } else {
