@@ -7,7 +7,6 @@
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/shop.css" />
-    <script src="/js/script.js"></script>
     <script src="/js/jquery.js"></script>
     <style>body {animation: fadeIn 500ms linear forwards}</style>
 
@@ -24,36 +23,31 @@
     <meta name="apple-mobile-web-app-status-bar" content="#222222" />
 </head>
 <body>
-    <div class="header">Wii Shop Channel</div>
-    <h2>Titles you've downloaded</h2>
-    <div class="titles">
-        <div class="product">
-            <img src="../assets/channels/homebrew/video.gif" />
-            <div>
-                <span class="title">Homebrew Channel</span><hr>
-                <span class="method">homebrew();</span><br>
-                <span class="belonging">Virtual Disc</span>
-            </div>
-        </div>
-        <div class="product">
-            <img src="../assets/channels/bottomgear/thumb.jpg" />
-            <div>
-                <span class="title">BOTTOM GEAR™</span><hr>
-                <span class="method">bottomgear();</span><br>
-                <span class="belonging">Virtual Disc</span>
-            </div>
-        </div>
+    <!-- bg gradients -->
+    <div id="bggradients">
+        <img src="../assets/shop-gradient.png" class="l">
+        <img src="../assets/shop-gradient.png" class="r">
     </div>
+
+    <!-- content -->
+    <div class="header">Wii Shop Channel</div>
+    <div id="content">
+        <iframe id="contentframe" src="pages/index.html" frameborder="0"></iframe>
+    </div>
+
+    <!-- bottom of page -->
     <div class="bottom">
-        <a href="/?skipwarn=true" class="buttonlike">Wii Menu</a>
+        <a href="/?skipwarn=true" class="buttonlikeshop">Wii Menu</a>
         <div>
             <span class="pt">&infin;</span>
             <span class="label">Wii Points</span>
         </div>
         <a href="https://developer.chrome.com/docs/devtools/console/javascript/"
-        class="buttonlike" target="_blank">Shopping Guide</a>
+        class="buttonlikeshop" target="_blank">Shopping Guide</a>
     </div>
 
+
+    <!-- other -->
     <div class="home-menu">
         <div class="bar-top close-pause-menu">
             <span>HOME Menu</span>

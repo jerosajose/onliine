@@ -1,14 +1,3 @@
-// Add channels that user has in their channel storage.
-window.onload = function () {
-    // For each user channel
-    // (userChannels is defined in 'config.js')
-    for (const channel of userChannels) {
-        // Send info to makeChannel
-        makeChannel(channel);
-    }
-    mainchannelsset = true;
-}
-
 // Add channel
 // Adds to channel config too.
 // Defaults: addChannel('id', 'Title', 'path-to-assets', 'path-to-channelart')
