@@ -24,6 +24,34 @@ var bgMusic = new Howl({
     loop: true
 });
 
+/**
+ * Function to change the current background music.
+ *
+ * @param {string} fileLocation - The location of the background music file.
+ * @param {string} introLocation - The location of the intro file for the song. Will autoplay when provided.
+ * @return {void} This function does not return any value.
+ */
+// Set BG Music
+function setBGMusic(fileLocation, introLocation) {
+    bgMusic = new Howl({
+        src: `${window.location.origin}/${fileLocation}`,
+        volume: userConfig.musicVol,
+        loop: true
+    });
+
+    if (introLocation) {
+        let intro = new Howl({
+            src: `${window.location.origin}/${introLocation}`,
+            volume: userConfig.musicVol,
+            autoplay: true
+        });
+
+        intro.on('end', () => {
+            bgMusicToggle();
+        });
+    }
+}
+
 // Toggle BG Music
 function bgMusicToggle(forceToggle) {
     // If forceToggle is on

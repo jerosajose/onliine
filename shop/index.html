@@ -7,7 +7,33 @@
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/shop.css" />
+    <script src="/js/shop.js"></script>
+
+    <script src="/js/script.js"></script>
     <script src="/js/jquery.js"></script>
+    <script src="/js/howler.min.js"></script>
+    <script src="/js/from-html.js"></script>
+    <script src="/js/audio.js"></script>
+    <script src="/js/config.js"></script>
+    <script src="/js/buttons.js"></script>
+    <script src="/js/channels.js"></script>
+    <script>
+        // Only for index page;
+        $(document).ready(function() {
+            // Aspect ratio loop
+            setInterval(() => {
+                var target = document.querySelector('#aspectcontainer');
+                target.style.scale = Math.min(window.innerWidth / 608, window.innerHeight / 456);
+                target.style.top = (window.innerHeight - target.clientHeight) / 2 + "px";
+                target.style.left = (window.innerWidth - target.clientWidth) / 2 + "px";
+            }, 50);
+
+            // Init buttons
+            setTimeout(() => {
+                buttonInitHoverSfx();
+            }, 100);
+        });
+    </script>
     <style>body {animation: fadeIn 500ms linear forwards}</style>
 
     <meta property="og:site_name" content="Onliine" />
@@ -29,21 +55,26 @@
         <img src="../assets/shop-gradient.png" class="r">
     </div>
 
-    <!-- content -->
-    <div class="header">Wii Shop Channel</div>
-    <div id="content">
-        <iframe id="contentframe" src="pages/index.html" frameborder="0"></iframe>
-    </div>
+    <!-- aspect ratio container -->
+    <div id="aspectcontainer">
+        <!-- header -->
+        <div class="header">Wii Shop Channel</div>
 
-    <!-- bottom of page -->
-    <div class="bottom">
-        <a href="/?skipwarn=true" class="buttonlikeshop">Wii Menu</a>
-        <div>
-            <span class="pt">&infin;</span>
-            <span class="label">Wii Points</span>
+        <!-- content -->
+        <div id="content">
+            <div id="contentframe" from-html="pages/index.html"></div>
         </div>
-        <a href="https://developer.chrome.com/docs/devtools/console/javascript/"
-        class="buttonlikeshop" target="_blank">Shopping Guide</a>
+
+        <!-- bottom of page -->
+        <div class="bottom">
+            <a onclick="window.location.href = '/?skipwarn=true'" class="back buttonlikeshop">Wii Menu</a>
+            <div>
+                <span class="pt">&infin;</span>
+                <span class="label">Wii Points</span>
+            </div>
+            <a href="https://developer.chrome.com/docs/devtools/console/javascript/"
+            class="guide buttonlikeshop" target="_blank">Shopping Guide</a>
+        </div>
     </div>
 
 
@@ -128,5 +159,7 @@
             $(".returndialog").css("display", "none");
         });
     </script>
+
+    <script>includeHTML();</script>
 </body>
 </html>
