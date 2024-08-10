@@ -7,11 +7,12 @@
     .buttonlikeshop .text, .buttonlikeshop2 .text {
         margin: auto;
         font-size: 18px;
-        line-height: 28px;
+        line-height: 26px;
         max-width: 90%;
     }
 
     #maincategories {
+        margin-top: 10px;
         gap: 22px;
     }
 
@@ -89,7 +90,7 @@
     <a class="buttonlikeshop2">
         <div class="text">Account Activity</div>
     </a>
-    <a class="buttonlikeshop2" onclick="playSFX('button-select-big.mp3', userConfig.sfxVol);changePage('downloaded');">
+    <a class="buttonlikeshop2" page="downloaded">
         <div class="text">Titles You've Downloaded</div>
     </a>
     <a class="buttonlikeshop2">

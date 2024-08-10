@@ -7,33 +7,18 @@
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/shop.css" />
-    <script src="/js/shop.js"></script>
+    <script src="js/shop.js"></script>
+    <script src="/db/shopitems.js"></script>
 
     <script src="/js/script.js"></script>
     <script src="/js/jquery.js"></script>
     <script src="/js/howler.min.js"></script>
     <script src="/js/from-html.js"></script>
+    <script src="/js/homemenu.js"></script>
     <script src="/js/audio.js"></script>
     <script src="/js/config.js"></script>
     <script src="/js/buttons.js"></script>
     <script src="/js/channels.js"></script>
-    <script>
-        // Only for index page;
-        $(document).ready(function() {
-            // Aspect ratio loop
-            setInterval(() => {
-                var target = document.querySelector('#aspectcontainer');
-                target.style.scale = Math.min(window.innerWidth / 608, window.innerHeight / 456);
-                target.style.top = (window.innerHeight - target.clientHeight) / 2 + "px";
-                target.style.left = (window.innerWidth - target.clientWidth) / 2 + "px";
-            }, 50);
-
-            // Init buttons
-            setTimeout(() => {
-                buttonInitHoverSfx();
-            }, 100);
-        });
-    </script>
     <style>body {animation: fadeIn 500ms linear forwards}</style>
 
     <meta property="og:site_name" content="Onliine" />
@@ -49,10 +34,17 @@
     <meta name="apple-mobile-web-app-status-bar" content="#222222" />
 </head>
 <body>
-    <!-- bg gradients -->
-    <div id="bggradients">
-        <img src="../assets/shop-gradient.png" class="l">
-        <img src="../assets/shop-gradient.png" class="r">
+    <!-- bg -->
+    <div id="bg">
+        <div class="bggradients">
+            <img src="../assets/shop-gradient.png" class="l">
+            <img src="../assets/shop-gradient.png" class="r">
+        </div>
+
+        <div class="dots">
+            <div class="t">....................................................................................................................................................................................</div>
+            <div class="b">....................................................................................................................................................................................</div>
+        </div>
     </div>
 
     <!-- aspect ratio container -->
@@ -76,89 +68,6 @@
             class="guide buttonlikeshop" target="_blank">Shopping Guide</a>
         </div>
     </div>
-
-
-    <!-- other -->
-    <div class="home-menu">
-        <div class="bar-top close-pause-menu">
-            <span>HOME Menu</span>
-            <img src="/assets/home-close.png" />
-        </div>
-        <div class="in-between">
-            <a class="buttonlike backtomenu">Wii Menu</a>
-            <a class="buttonlike" onclick="window.location.reload()">Reset</a>
-        </div>
-        <div class="bar-bottom">
-            <img src="/assets/remote.png" class="remote" />
-            <div>
-                <div class="battery">
-                    <div>
-                        <span>P1</span>
-                        <img src="/assets/power-full.png" />
-                    </div>
-                    <div>
-                        <span>P2</span>
-                        <img src="/assets/power-empty.png" />
-                    </div>
-                    <div>
-                        <span>P3</span>
-                        <img src="/assets/power-empty.png" />
-                    </div>
-                    <div>
-                        <span>P4</span>
-                        <img src="/assets/power-empty.png" />
-                    </div>
-                </div>
-                <div class="text">Wii Remote Settings</div>
-            </div>
-        </div>
-    </div>
-    <div class="returndialog">
-        <div class="msgbox">
-            <div class="text">
-                Return to the Wii Menu?<br>
-                (Anything not saved will be lost.)
-            </div>
-            <div class="actions">
-                <a onclick="rm2();">Yes</a>
-                <a class="closedialog">No</a>
-            </div>
-        </div>
-    </div>
-    <script>
-        // HOME/PAUSE MENU
-        if (document.addEventListener) {
-            document.addEventListener('contextmenu', function(e) {
-                homeIn();
-                $(".home-menu").css("display", "grid");
-                e.preventDefault();
-            }, false);
-        }
-        else {
-            document.attachEvent('oncontextmenu', function() {
-                alert("EXCEPTION HANDLED: Failed to open Home/Pause menu.\nPlease report any bugs to the Everybody Votes channel.");
-                window.event.returnValue = false;
-            });
-        }
-
-        $(".close-pause-menu").click(event => {
-            $(".home-menu").addClass("fadeOut");
-            setTimeout(() => {
-                $(".home-menu").css("display", "none");
-                $(".home-menu").removeClass("fadeOut");
-            }, 250);
-            bgmus(); homeOut();
-        });
-
-        $(".backtomenu").click(event => {
-            $(".returndialog").css("display", "flex");
-            rm1();
-        });
-
-        $(".closedialog").click(event => {
-            $(".returndialog").css("display", "none");
-        });
-    </script>
 
     <script>includeHTML();</script>
 </body>
