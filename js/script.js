@@ -82,3 +82,13 @@ function startup(params) {
         }, 500);
     }, 3000);
 }
+
+
+/**
+ * Checks if the current application is running as a Progressive Web App (PWA).
+ *
+ * @return {boolean} True if the application is running as a PWA, false otherwise.
+ */
+function ifPWA() {
+    return window.matchMedia("(display-mode: standalone)").matches;
+}

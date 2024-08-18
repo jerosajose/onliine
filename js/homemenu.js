@@ -50,11 +50,19 @@ window.addEventListener("load", () => {
         </div>
     `);
 
+    var lastBgMusicState;
+
     if (document.addEventListener) {
+        // Right click event for home menu
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
             if ($('.home-menu')[0].ariaLabel !== 'on') {
-                bgMusicToggle(); playSFX(`home-in.mp3`, userConfig.sfxVol);
+                lastBgMusicState = getBGMusicState();
+                // Get bgMusic intro state & pause if it's playing
+                if (getBGMusicState().intro) bgMusicIntroToggle();
+                // Get bgMusic main state & pause if it's playing
+                if (getBGMusicState().main) bgMusicToggle();
+                playSFX(`home-in.mp3`, userConfig.sfxVol);
                 $(".home-menu").css("display", "grid");
                 $('.home-menu')[0].ariaLabel = 'on';
             }
@@ -74,7 +82,10 @@ window.addEventListener("load", () => {
             $(".home-menu").removeClass("fadeOut");
         }, 250);
         playSFX('button-cancel.mp3', userConfig.sfxVol);
-        bgMusicToggle();
+        // Get bgMusic intro state & pause if it's playing
+        if (lastBgMusicState.intro) bgMusicIntroToggle();
+        // Get bgMusic main state & pause if it's playing
+        if (lastBgMusicState.main) bgMusicToggle();
         $('.home-menu')[0].ariaLabel = null;
     });
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Menu | Onliine</title>
+    <link rel="manifest" href="manifest.json">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/script.js"></script>
@@ -54,14 +55,13 @@
                 <div class="text">
                     <h2><div class="warn-icon">&#9888;&nbsp;</div>WARNING-HEALTH AND SAFETY</h3>
                     <p class="desc">
-                        Welcome to Onliine! A web project made to simulate the latest
-                        version of the Wii's menu, known as "IOS".
-                        This website is in super-duper early access & may contain bugs!
-                        So please,
+                        BEFORE PLAYING, READ YOUR OPERATIONS MANUAL
+                        FOR IMPORTANT INFORMATION ABOUT YOUR HEALTH
+                        AND SAFETY.
                     </p>
                     <p class="bottom">
-                        Report your issues on<br>
-                        <a href="https://github.com/ktg5/onliine">github.com/ktg5/onliine</a>
+                        Also online at<br>
+                        <a href="">www.nintendo.com/healthsafety</a>
                     </p>
                 </div>
 
@@ -129,7 +129,7 @@
 
         <!-- show special electron download channel -->
         <script>
-            if (!info) {
+            if (info == undefined && ifPWA() == false) {
                 let tempinterval = setInterval(() => {
                     if (mainchannelsset) {
                         makeChannel({

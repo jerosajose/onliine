@@ -18,6 +18,7 @@
 var userConfig = JSON.parse(localStorage.getItem('onliine-settings'));
 
 // BG Music
+var introBgMusic;
 var bgMusic = new Howl({
     src: `${window.location.origin}/audio/bg-music.mp3`,
     volume: userConfig.musicVol,
@@ -40,13 +41,13 @@ function setBGMusic(fileLocation, introLocation) {
     });
 
     if (introLocation) {
-        let intro = new Howl({
+        introBgMusic = new Howl({
             src: `${window.location.origin}/${introLocation}`,
             volume: userConfig.musicVol,
             autoplay: true
         });
 
-        intro.on('end', () => {
+        introBgMusic.on('end', () => {
             bgMusicToggle();
         });
     }
@@ -71,6 +72,35 @@ function bgMusicToggle(forceToggle) {
     } else {
         alert('how the hell the bgmusic get called to stop but it aint even here???');
     }
+}
+
+// Toggle BG Music Intro
+function bgMusicIntroToggle(forceToggle) {
+    // If forceToggle is on
+    if (forceToggle) {
+        if (forceToggle == false) {
+            introBgMusic.pause();
+        } else if (forceToggle == true) {
+            introBgMusic.play();
+        }
+    // If BG Music is playing
+    } else if (introBgMusic.playing() == true) {
+        introBgMusic.pause();
+    // Or, if it's paused
+    } else if (introBgMusic.playing() == false) {
+        introBgMusic.play();
+    // Else nothing else!
+    } else {
+        alert('how the hell the introBgMusic get called to stop but it aint even here???');
+    }
+}
+
+// Get bgMusic state
+function getBGMusicState() {
+    return {
+        intro: introBgMusic.playing(),
+        main: bgMusic.playing()
+    };
 }
 
 // Play Music

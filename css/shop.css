@@ -94,11 +94,15 @@ body {
     position: relative;
 }
 
-#bg .dots .b {position: relative;top: 350px;}
+#bg .dots .b {background: url(../shop/assets/bgdot.png);background-size: 8px;width: 100vw;height: 7px;position: relative;top: 359px;}
 
 #bg .dots .t {
+    background: url('../shop/assets/bgdot.png');
+    background-size: 8px;
+    width: 100vw;
+    height: 7px;
     position: relative;
-    top: 58px;
+    top: 64px;
 }
 
 

@@ -46,7 +46,7 @@ var def_channels = [
         title: 'Wii Shop Channel',
         assets: 'assets/channels/',
         channelart: 'channelart/',
-        target: '/shop'
+        target: '/shop/index.html'
     },
     {
         id: 'news',
