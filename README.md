@@ -1,6 +1,6 @@
 # Welcome to Onliine!
 The website that simulates the Wii System to perfection (almost).
-![Project Logo](https://raw.githubusercontent.com/Ascript89/onliine/main/assets/logotype.png)
+![Project Logo](https://raw.githubusercontent.com/jerosajose/onliine/main/assets/logotype.png)
 
 ## Collaborations
 I'm open to collaborations! Come and join [the Discord server](https://discord.gg/qMdZZkps2E)
@@ -12,7 +12,7 @@ might contain errors, has poorly written code and hence I will not focus on perf
 The project is on a hiatus until I deploy the next update due to me needing to concentrate on my
 ongoing school course. New stuff coming this summer.
 
-Visit [this website](https://ascript89.github.io/res/sysver.txt) to check the latest version available.
+Visit [this website](https://jerosajose.github.io/res/sysver.txt) to check the latest version available.
 
 ## Updater
 While you tinker with the source code, make sure to visit regularly the Settings page, which is
@@ -24,9 +24,9 @@ and merge the new files into your previously/outdated downloaded folder.
 
 ## License
 Onliine Website - Wii System simulator<br>
-Copyright (C) 2023 JerosGamer89<br>
+Copyright (C) 2023 José Enrique<br>
 Legal queries at smartlinkwfs(at)gmail.com<br>
-Source: https://github.com/Ascript89/onliine<br>
+Source: https://github.com/jerosajose/onliine<br>
 
 This website is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published
