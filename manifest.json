@@ -1,15 +1,29 @@
 {
+    "theme_color": "#010101",
+    "background_color": "#010101",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
     "name": "Onliine",
     "short_name": "Onliine",
-    "start_url": "/",
+    "description": "Wii Menu simulator, now turning into something else",
+    "categories": ["games", "entertainment"],
+    "orientation": "portrait",
+    "prefer_related_applications": false,
+    "protocol_handlers": [{"protocol": "web+onliine", "url": "/%s"}],
+    "launch_handler": {
+        "client_mode": ["navigate_new", "auto"]
+    },
+    "shortcuts" : [
+        {"name": "Start", "url": "/"},
+        {"name": "Settings", "url": "/settings"},
+        {"name": "Wii Shop Channel", "url": "/shop"}
+    ],
     "icons": [
         {
             "src": "assets/pwa/256.png",
             "type": "image/png",
             "sizes": "256x256"
         }
-    ],
-    "theme_color": "#000",
-    "background_color": "#000",
-    "display": "standalone"
+    ]
 }
