@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>wtf r u doin here</title>
+    <link rel="stylesheet" href="../../css/base.css" />
+    <style>
+        body {
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }   
+
+
+        #p1 {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            background: black;
+        }
+        
+        #p2 {
+            opacity: 1;
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            background: white;
+            animation: p2-base-anim 10s linear infinite;
+            z-index: 2;
+        }
+
+        #p2 .icon {
+            opacity: 0;
+            width: 40vw;
+            height: auto;
+            position: absolute;
+            margin: auto;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            top: 0;
+            z-index: 2;
+            animation: p2-icon-anim 10s linear infinite;
+        }
+
+        @keyframes p2-base-anim {
+            0% {
+                opacity: 1;
+            }
+            5% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 0;
+            }
+            55% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes p2-icon-anim {
+            0% {
+                opacity: 0;
+            }
+            55% {
+                opacity: 0;
+            }
+            60% {
+                opacity: 1;
+            }
+            95% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+    
+    <div id="p1">
+        <img class="banner" src="banner.png" style="width: 100%;">
+    </div>
+
+    <div id="p2">
+        <img class="icon" src="thething.png">
+    </div>
+
+</body>
+
+</html>

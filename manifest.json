@@ -1,0 +1,15 @@
+{
+    "name": "Onliine",
+    "short_name": "Onliine",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "assets/pwa/256.png",
+            "type": "image/png",
+            "sizes": "256x256"
+        }
+    ],
+    "theme_color": "#000",
+    "background_color": "#000",
+    "display": "standalone"
+}

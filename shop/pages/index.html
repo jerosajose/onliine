@@ -1,0 +1,99 @@
+<style>
+    /* page style */
+    .buttonlist {
+        display: flex;
+    }
+
+    .buttonlikeshop .text, .buttonlikeshop2 .text {
+        margin: auto;
+        font-size: 18px;
+        line-height: 26px;
+        max-width: 90%;
+    }
+
+    #maincategories {
+        margin-top: 10px;
+        gap: 22px;
+    }
+
+    #maincategories .buttonlikeshop {
+        width: 100%;
+        height: 110px;
+    }
+
+    #maincategories .buttonlikeshop .icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 65%;
+    }
+
+    #maincategories .buttonlikeshop .icon img {
+        max-width: 80px;
+        max-height: 120px;
+    }
+
+    #maincategories .buttonlikeshop .icon ~ .text {
+        font-size: 16px;
+        line-height: 16px;
+        margin: 8px auto 0 auto;
+    }
+
+
+    #points {
+        margin: 12px 0;
+    }
+
+    #points .buttonlikeshop {
+        margin: auto;
+        width: 290px;
+        height: 46px;
+    }
+
+    
+    #acccountcategories {
+        gap: 10px;
+    }
+
+    #acccountcategories .buttonlikeshop2 {
+        width: 100%;
+    }
+</style>
+
+<div id="maincategories" class="buttonlist">
+    <a page="vconsole" class="buttonlikeshop">
+        <div class="icon">
+            <img src="assets/channels.png">
+        </div>
+        <div class="text">Virtual Console</div>
+    </a>
+    <a page="wiiware" class="buttonlikeshop">
+        <div class="icon">
+            <img src="assets/channels.png">
+        </div>
+        <div class="text">WiiWare</div>
+    </a>
+    <a page="channels" class="buttonlikeshop">
+        <div class="icon">
+            <img src="assets/channels.png">
+        </div>
+        <div class="text">Wii Channels</div>
+    </a>
+</div>
+<div id="points" class="buttonlist">
+    <a class="buttonlikeshop">
+        <div class="text">Add Wii Points</div>
+    </a>
+</div>
+
+<div id="acccountcategories" class="buttonlist">
+    <a class="buttonlikeshop2">
+        <div class="text">Account Activity</div>
+    </a>
+    <a class="buttonlikeshop2" page="downloaded">
+        <div class="text">Titles You've Downloaded</div>
+    </a>
+    <a class="buttonlikeshop2">
+        <div class="text">Settings and Features</div>
+    </a>
+</div>
