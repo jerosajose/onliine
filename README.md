@@ -24,7 +24,7 @@ and merge the new files into your previously/outdated downloaded folder.
 
 ## License
 Onliine Website - Wii System simulator<br>
-Copyright (C) 2023 José Enrique<br>
+Copyright (C) 2024 José Enrique<br>
 Legal queries at smartlinkwfs(at)gmail.com<br>
 Source: https://github.com/jerosajose/onliine<br>
 
