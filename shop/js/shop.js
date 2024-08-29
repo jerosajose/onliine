@@ -1,3 +1,16 @@
+let settings = [
+    {
+        title: 'Always Wednesdays',
+        desc: 'Always play "Update Day" from Nirvana The Band The Show',
+        key: 'alwaysWednesdays',
+        option: {
+            type: 'toggle'
+        },
+        default: false
+    }
+]
+
+
 // Change bg music and load
 window.addEventListener('load', () => {
     // Aspect ratio loop
@@ -27,7 +40,7 @@ window.addEventListener('load', () => {
 
 
 function startMusic() {
-    if (new Date().getDay() === 3) {
+    if (new Date().getDay() === 3 || getChannelConfigKey('alwaysWednesdays') === true) {
         setBGMusic('shop/music/wednesdays.mp3', 'shop/music/intro.mp3');
     } else {
         setBGMusic('shop/music/loop.mp3', 'shop/music/intro.mp3');
@@ -35,9 +48,13 @@ function startMusic() {
 }
 
 
-function initItem(category, id) {
+async function initItem(category, id) {
     if (!category || !id) {
         console.error('initItem: category and id are required');
+    }
+    // Make sure the id has not been added already
+    if (document.querySelector(`.product#${id}`)) {
+        return;
     }
     let categoryName;
     switch (category) {
@@ -58,24 +75,57 @@ function initItem(category, id) {
     if (!shopItems[category] || !item) {
         console.error('initItem: category or item not found');
     }
-    
 
-    // Add item to page
-    console.log(item);
+    
+    // Get assets URL
+    let channelAssets;
+    if (!item.assets.includes('http://') && !item.assets.includes('https://')) {
+        channelAssets = `../${item.assets}`;
+    }
+    let channelIDLocation = channelAssets + item.id;
+
+    // Fetch for possible thumbnails
+    let channelThumb;
+    let possibleThumbs = [
+        'thumb.png',
+        'thumb.jpg',
+        'thumb.jpeg',
+        'thumb.gif',
+        'thunb.webp',
+        'video.gif',
+    ]
+    let foundThumb = false;
     let titles = document.querySelector('.titles');
-    titles.insertAdjacentHTML('beforeend', `
-        <div class="product" id="${item.id}">
-            <div class="preview" style="background: url('/${item.assets}${item.id}/thumb.png');"></div>
-            <div class="info">
-                <span class="title">${item.title}</span>
-                <div class="spacer"></div>
-                <div class="below">
-                    <span class="publisher">${item.publisher}</span>
-                    <span class="category">${categoryName}</span>
-                </div>
-            </div>
-        </div>
-    `);
+    possibleThumbs.forEach(async thumb => {
+        if (foundThumb === true) {
+            return;
+        } else {
+            var http = new XMLHttpRequest();
+            http.open('HEAD', `${channelIDLocation}/${thumb}`, false);
+            http.send();
+
+            if (http.status == 200) {
+                console.log(`Found thumbnail: ${thumb}`);
+                channelThumb = thumb;
+
+                // Add item to page
+                titles.insertAdjacentHTML('beforeend', `
+                    <div class="product" id="${item.id}">
+                        <div class="preview" style="background: url('${channelIDLocation}/${channelThumb}');"></div>
+                        <div class="info">
+                            <span class="title">${item.title}</span>
+                            <div class="spacer"></div>
+                            <div class="below">
+                                <span class="publisher">${item.publisher}</span>
+                                <span class="category">${categoryName}</span>
+                            </div>
+                        </div>
+                    </div>
+                `);
+                foundThumb = true;
+            }
+        }
+    });
 }
 
 
@@ -138,9 +188,13 @@ function changePage(htmlName) {
         let titles = document.querySelector('.titles');
         if (titles) {
             if (titles.getAttribute('category') == 'downloaded') {
-                userChannels.forEach(channel => {
-                    initItem(titles.getAttribute('category'), channel.id);
-                });
+                if (userChannels.length > 0) {
+                    userChannels.forEach(channel => {
+                        initItem(titles.getAttribute('category'), channel.id);
+                    });
+                }
+            } else if (titles.getAttribute('category') == 'settings') {
+                initSettings();
             } else {
                 shopItems[titles.getAttribute('category')].forEach(channel => {
                     initItem(titles.getAttribute('category'), channel.id);
@@ -157,4 +211,22 @@ function changePage(htmlName) {
             headerElmnt.style.color = 'black';
         }
     }, 50);
+
+
+    // We wanna make this one local
+    function initSettings() {
+        console.log('hi');
+        let titles = document.querySelector('.titles');
+        
+        settings.forEach(setting => {
+            titles.insertAdjacentHTML('beforeend', `
+                <div class="product setting" id="${setting.key}">
+                    <div class="preview" style="background: url('assets/${setting.key}.png');"></div>
+                    <div class="info">
+                        <span class="title">${setting.title}</span>
+                    </div>
+                </div>
+            `);
+        });
+    }
 }
