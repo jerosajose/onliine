@@ -48,12 +48,13 @@ function startMusic() {
 }
 
 
-async function initItem(category, id) {
+async function makeItem(category, id) {
     if (!category || !id) {
-        console.error('initItem: category and id are required');
+        console.error('makeItem: category and id are required');
     }
     // Make sure the id has not been added already
-    if (document.querySelector(`.product#${id}`)) {
+    let productDiv = document.querySelector(`.product#${id}`);
+    if (productDiv) {
         return;
     }
     let categoryName;
@@ -73,7 +74,7 @@ async function initItem(category, id) {
 
     let item = shopItems[category].find(item => item.id === id);
     if (!shopItems[category] || !item) {
-        console.error('initItem: category or item not found');
+        console.error('makeItem: category or item not found');
     }
 
     
@@ -122,9 +123,16 @@ async function initItem(category, id) {
                         </div>
                     </div>
                 `);
+                productDiv = document.querySelector(`.product#${id}`);
                 foundThumb = true;
             }
         }
+    });
+
+
+    // Init button click
+    productDiv.addEventListener('click', () => {
+        changePage('item', shopItems[category].find(item => item.id === id));
     });
 }
 
@@ -145,9 +153,10 @@ function checkItems() {
  * Function to change the page content based on the provided htmlName.
  *
  * @param {string} htmlName - The name of the HTML page (without the ".html" extension) to be displayed.
+ * @param {Object} args - The arguments to be passed to the HTML page.
  * @return {void} This function does not return any value.
  */
-function changePage(htmlName) {
+function changePage(htmlName, args) {
     let target = document.querySelector('#contentframe');
     let backButton = document.querySelector('.bottom .back');
     let htmlNameBack;
@@ -190,14 +199,14 @@ function changePage(htmlName) {
             if (titles.getAttribute('category') == 'downloaded') {
                 if (userChannels.length > 0) {
                     userChannels.forEach(channel => {
-                        initItem(titles.getAttribute('category'), channel.id);
+                        makeItem(titles.getAttribute('category'), channel.id);
                     });
                 }
             } else if (titles.getAttribute('category') == 'settings') {
                 initSettings();
             } else {
                 shopItems[titles.getAttribute('category')].forEach(channel => {
-                    initItem(titles.getAttribute('category'), channel.id);
+                    makeItem(titles.getAttribute('category'), channel.id);
                 });
             }
         }
@@ -215,7 +224,6 @@ function changePage(htmlName) {
 
     // We wanna make this one local
     function initSettings() {
-        console.log('hi');
         let titles = document.querySelector('.titles');
         
         settings.forEach(setting => {
