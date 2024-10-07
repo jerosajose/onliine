@@ -143,7 +143,6 @@ h2 {color: #333}
 .title-container {
     border: 1px var(--blue) solid;
     padding: 10px;
-    padding-top: 26px;
     width: 92%;
     height: 238px;
     margin: auto;
@@ -192,9 +191,13 @@ h2 {color: #333}
 }
 
 .titles .product .below span {
-    height: 18px;
+    max-height: 18px;
     font-size: 14px;
     line-height: 18px;
+}
+
+.titles .product .below .desc {
+    font-size: 10px;
 }
 
 .titles .product .spacer {
@@ -211,7 +214,9 @@ h2 {color: #333}
 }
 
 .titles .product .info {
+    min-height: 72px;
     margin-left: 6px;
+    position: relative;
 }
 
 .titles .product .title {
@@ -222,6 +227,11 @@ h2 {color: #333}
     font-size: 14px;
     line-height: 16px;
     overflow: hidden;
+}
+.titles[category="settings"] .product .title {
+    height: auto;
+    position: absolute;
+    top: 35%;
 }
 
 .rename-header {

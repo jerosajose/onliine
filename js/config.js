@@ -46,7 +46,7 @@ var def_channels = [
         title: 'Wii Shop Channel',
         assets: 'assets/channels/',
         channelart: 'channelart/',
-        target: '/shop/index.html'
+        target: 'shop/index.html'
     },
     {
         id: 'news',
@@ -63,33 +63,111 @@ var def_channels = [
     }
 ]
 
-// Set channels if they aren't set
-if (!localStorage.getItem('onliine-channels')) {
-    localStorage.setItem("onliine-channels", JSON.stringify(def_channels));
+// Instead of setting the default channels in say "userChannels", we'll put them in a different item in Local Storage.
+// This way we can make sure everything goes wrong in there and not have to worry about the defaults not working.
+// Also check for items that possibly don't exist.
+if (!localStorage.getItem('onliine-default-channels')) {
+    localStorage.setItem("onliine-default-channels", JSON.stringify(def_channels));
 }
-var userChannels = JSON.parse(localStorage.getItem('onliine-channels'));
-console.log(`user channels: `, userChannels);
+if (!localStorage.getItem('onliine-igrore-default-channels')) {
+    localStorage.setItem("onliine-ignore-default-channels", JSON.stringify({}));
+}
+if (!localStorage.getItem('onliine-channels')) {
+    localStorage.setItem("onliine-channels", JSON.stringify({}));
+}
+if (!localStorage.getItem('onliine-channel-configs')) {
+    localStorage.setItem("onliine-channel-configs", JSON.stringify({}));
+}
 
-// Load default config
-function resetConfig(confirm) {
+var defaultChannels = JSON.parse(localStorage.getItem('onliine-default-channels'));
+var userChannels = JSON.parse(localStorage.getItem('onliine-channels'));
+var ignoredDefaultChannels = JSON.parse(localStorage.getItem('onliine-igrore-default-channels'));
+var channelConfigs = JSON.parse(localStorage.getItem('onliine-channel-configs'));
+// From here, we can also check if the item needs changes.
+if (JSON.stringify(def_channels) != JSON.stringify(defaultChannels)) {
+    console.log('Detected changes to default channels!');
+    localStorage.setItem("onliine-default-channels", JSON.stringify(def_channels));
+}
+// For older configs (which can be removed after a while)
+if (userChannels && userChannels[2] && userChannels[2].id == 'photo') {
+    localStorage.setItem("onliine-channels", JSON.stringify({}));
+    location.reload();
+}
+console.log(`default channels: `, defaultChannels);
+
+
+// Reset default channels
+function resetDefaultChannels(confirm) {
     if (confirm == true) {
         // Confirmed! writing...
-        localStorage.setItem("onliine-settings", JSON.stringify(def_config));
-        userConfig = JSON.parse(localStorage.getItem('onliine-settings'));
-        console.log(`user config reset!:`, userConfig);
+        localStorage.setItem("onliine-default-channels", JSON.stringify(def_channels));
+        defaultChannels = JSON.parse(localStorage.getItem('onliine-default-channels'));
+        console.log(`default channels reset! (reload page to see):`, defaultChannels);
     } else {
-        console.error(`loadDefaultConfig: MAKE SURE YOU'D LIKE TO DO THIS BY USING "loadDefaultConfig(true)". THERE'S NO TURNING BACK!!`)
+        console.error(`resetDefaultChannels: MAKE SURE YOU'D LIKE TO DO THIS BY USING ADDING "true" IN THE FUNCTION. THERE'S NO TURNING BACK!!`)
     }
 }
 
-// Load default channels
-function resetChannels(confirm) {
+// Reset user channels
+function resetUserChannels(confirm) {
     if (confirm == true) {
         // Confirmed! writing...
         localStorage.setItem("onliine-channels", JSON.stringify(def_channels));
         userChannels = JSON.parse(localStorage.getItem('onliine-channels'));
         console.log(`user channels reset! (reload page to see):`, userChannels);
     } else {
-        console.error(`loadDefaultChannels: MAKE SURE YOU'D LIKE TO DO THIS BY USING ADDING "true" IN THE FUNCTION. THERE'S NO TURNING BACK!!`)
+        console.error(`resetUserChannels: MAKE SURE YOU'D LIKE TO DO THIS BY USING ADDING "true" IN THE FUNCTION. THERE'S NO TURNING BACK!!`)
+    }
+}
+
+// Reset ignored default channels
+function resetIgnoredChannels(confirm) {
+    if (confirm == true) {
+        // Confirmed! writing...
+        localStorage.setItem("onliine-igrore-default-channels", JSON.stringify(def_channels));
+        ignoredDefaultChannels = JSON.parse(localStorage.getItem('onliine-igrore-default-channels'));
+        console.log(`ignored channels reset! (reload page to see):`, ignoredDefaultChannels);
+    } else {
+        console.error(`resetIgnoredChannels: MAKE SURE YOU'D LIKE TO DO THIS BY USING ADDING "true" IN THE FUNCTION. THERE'S NO TURNING BACK!!`)
+    }
+}
+
+// Reset channel configs
+function resetConfig(confirm) {
+    if (confirm == true) {
+        // Confirmed! writing...
+        localStorage.setItem("onliine-channel-configs", JSON.stringify({}));
+        channelConfigs = JSON.parse(localStorage.getItem('onliine-channel-configs'));
+
+        console.log(`channel configs reset!:`, channelConfigs);
+    } else {
+        console.error(`resetConfig: MAKE SURE YOU'D LIKE TO DO THIS BY USING "loadDefaultConfig(true)". THERE'S NO TURNING BACK!!`)
+    }
+}
+
+
+// Add or edit a value in a channel config
+function editChannelConfig(key, value) {
+    if (channelID) {
+        if (!channelConfigs[channelID]) {
+            channelConfigs[channelID] = {};
+        }
+        channelConfigs[channelID][key] = value;
+        console.log(channelConfigs[key]);
+        localStorage.setItem("onliine-channel-configs", JSON.stringify(channelConfigs));
+    } else {
+        alert('There is not "channelID" varaible set. Please add one before trying to edit the channel config!')
+    }
+}
+
+// Get a value from a channel config
+function getChannelConfigKey(key) {
+    if (channelID) {
+        if (!channelConfigs[channelID]) {
+            channelConfigs[channelID] = {};
+        }
+        return channelConfigs[channelID][key];
+    } else {
+        alert('There is not "channelID" varaible set. Please add one before trying to get the channel config!')
     }
 }

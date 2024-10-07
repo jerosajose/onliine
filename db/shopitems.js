@@ -20,5 +20,6 @@ setTimeout(() => {
             }
         ],
         downloaded: userChannels,
+        defaults: defaultChannels
     }
 }, 100);

@@ -98,7 +98,7 @@ function bgMusicIntroToggle(forceToggle) {
 // Get bgMusic state
 function getBGMusicState() {
     return {
-        intro: introBgMusic.playing(),
+        intro: introBgMusic ? introBgMusic.playing() : false,
         main: bgMusic.playing()
     };
 }

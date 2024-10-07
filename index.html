@@ -31,12 +31,24 @@
         // Add channels that user has in their channel storage.
         window.addEventListener('load', () => {
             // For each user channel
-            // (userChannels is defined in 'config.js')
-            for (const channel of userChannels) {
+            // (defaultChannels is defined in 'config.js')
+            for (const channel of defaultChannels) {
                 // Send info to makeChannel
                 makeChannel(channel);
             }
             mainchannelsset = true;
+        });
+
+        // Add channels that user has in their channel storage.
+        window.addEventListener('load', () => {
+            // For each user channel
+            // (userChannels is defined in 'config.js')
+            if (userChannels && userChannels.length > 0) {
+                for (const channel of userChannels) {
+                    // Send info to makeChannel
+                    makeChannel(channel);
+                }
+            }
         });
 
         // Start the clock
@@ -248,7 +260,16 @@
         $(document).on("click", ".occupied", function() {
             console.log(`current channel:`, $(this).data('id'));
             // Get channel from channel confg to find assets folder
-            var targetChannel = null;
+            let targetChannel = null;
+            // First try to find the channel in the defaultChannels
+            for (let i = 0; i < defaultChannels.length; i++) {
+                const element = defaultChannels[i];
+                
+                if (element.id == $(this).data('id')) {
+                    targetChannel = element;
+                }
+            }
+            // Try to find the channel in userChannels
             for (let i = 0; i < userChannels.length; i++) {
                 const element = userChannels[i];
                 
@@ -277,25 +298,25 @@
                     console.log($(this).data('special'));
                 // This is what should really happen.
                 } else {
-                    alert(`The '${$(this).data('id')}' channel couldn't be found in the channel config!`);
+                    alert(`The '${$(this).data('id')}' channel couldn't be found in the default & user channel config!`);
                 }
             }
 
             // Audio
-            var audiosrc = targetChannel.assets + $(this).data('id') + '/audio.mp3';
+            let audiosrc = targetChannel.assets + $(this).data('id') + '/audio.mp3';
             $("#chSpec").attr('src', audiosrc);
             // Video
             // If this channel has a "videoformat"
-            var vformat = 'gif';
+            let vformat = 'gif';
             if (targetChannel.videoformat) {
                 vformat = targetChannel.videoformat
             }
-            var videosrc = targetChannel.assets + $(this).data('id') + `/video.${vformat}`;
+            let videosrc = targetChannel.assets + $(this).data('id') + `/video.${vformat}`;
             $("#videoSpec").attr('src', videosrc);
 
             // Start channel music
             $("#chSpec")[0].currentTime = 0;
-            var currentaudio = document.getElementById("chSpec");
+            let currentaudio = document.getElementById("chSpec");
             currentaudio.play();
 
             // Move into channel
