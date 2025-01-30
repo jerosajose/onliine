@@ -9,8 +9,8 @@ for the project and have a chat with all of us enthusiasts of this project.
 ## Status
 This project is on its early development phase, meaning that is quite incomplete,
 might contain errors, has poorly written code and hence I will not focus on performance at the moment.
-The project is on a hiatus until I deploy the next update due to me needing to concentrate on my
-ongoing school course. New stuff coming this summer.
+The project is on a hiatus until I deploy the next update due to me needing to concentrate on ~~my
+ongoing school course~~ university. New stuff coming this summer.
 
 Visit [this website](https://jerosajose.github.io/res/sysver.txt) to check the latest version available.
 
